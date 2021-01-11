@@ -28,6 +28,11 @@ function App() {
                 <button>Search</button>
             </form>
             {loading && <p>Loading...</p>}
+            {location.length > 0 && location.map(loc => (
+                <div key={loc.woeid}>
+                    {loc.title}
+                </div>
+            ))}
         </div>
     )
 }

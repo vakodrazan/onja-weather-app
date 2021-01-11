@@ -29890,7 +29890,9 @@ function App() {
       type: "ON CHANGE",
       query: e.target.value
     })
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."));
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
+    key: loc.woeid
+  }, loc.title)));
 }
 
 var _default = App;

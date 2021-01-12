@@ -35,6 +35,7 @@ function ContextProvider({children}) {
         const data = await res.json();
         dispatch({type: "GET DATA", location: data})
     }
+
     useEffect(() => {
         fetchData();
     }, []);

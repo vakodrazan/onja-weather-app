@@ -5,10 +5,8 @@ import WeatherDetails from './components/WeatherDetails';
 function App() {
     return ( 
         <div>
+            <Homepage />
             <Switch>
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
                 <Route path="/:woeid">
                     <WeatherDetails />
                 </Route>

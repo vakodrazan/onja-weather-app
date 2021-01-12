@@ -34038,23 +34038,54 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function WeatherDetails() {
   const {
+    state
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    loading
+  } = state;
+  const {
     woeid
   } = (0, _reactRouterDom.useParams)();
-  console.log(woeid);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlight ", woeid));
+  const [details, setDetails] = (0, _react.useState)([]);
+  const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+
+  async function getWeatherDetail() {
+    const res = await fetch(WEATHER_URL + woeid);
+    const data = await res.json();
+    setDetails(data);
+  }
+
+  (0, _react.useEffect)(() => {
+    getWeatherDetail();
+  }, [woeid]);
+  console.log(details.consolidated_weather);
+  const today = new Date();
+  const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24);
+  console.log(today);
+  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlight ", woeid), /*#__PURE__*/_react.default.createElement("div", null, details.consolidated_weather?.map(consolidate => {
+    const date = new Date(consolidate?.applicable_date);
+    console.log(date == today);
+    return /*#__PURE__*/_react.default.createElement("section", {
+      key: consolidate.id
+    }, /*#__PURE__*/_react.default.createElement("p", null, consolidate.humidity), /*#__PURE__*/_react.default.createElement("div", null, date === today ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, "Today ", date)) : /*#__PURE__*/_react.default.createElement("p", null, "Not the same")), /*#__PURE__*/_react.default.createElement("p", null));
+  })));
 }
 
 var _default = WeatherDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34073,10 +34104,7 @@ var _WeatherDetails = _interopRequireDefault(require("./components/WeatherDetail
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    exact: true,
-    path: "/"
-  }, /*#__PURE__*/_react.default.createElement(_Homepage.default, null)), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Homepage.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/:woeid"
   }, /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null))));
 }

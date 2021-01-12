@@ -23,8 +23,6 @@ function WeatherDetails() {
     }, [woeid])
 
     console.log(details.consolidated_weather);
-    const today = new Date();
-    const tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
 
     return (
         <div>
@@ -33,15 +31,15 @@ function WeatherDetails() {
             <h1>Today's highlight {woeid}</h1>
             <ul>{details.consolidated_weather?.map(consolidate => {
 
-                // const date = new Date(consolidate?.applicable_date);
+                const date = new Date(consolidate?.applicable_date).toDateString();;
 
                 return (
-                    <li key={consolidate.id  }>
-                        <p>{consolidate.applicable_date}</p>
+                    <li key={consolidate.id}>
+                        <p>{date}</p>
                         <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                         <div>
-                            <div>{consolidate.max_temp}</div>
-                            <div>{consolidate.min_temp}</div>
+                            <div>{consolidate.max_temp} °C</div>
+                            <div>{consolidate.min_temp} °C</div>
                         </div>
                     </li>
                 )

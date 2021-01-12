@@ -34071,15 +34071,14 @@ function WeatherDetails() {
     getWeatherDetail();
   }, [woeid]);
   console.log(details.consolidated_weather);
-  const today = new Date();
-  const tomorrow = new Date(today.getTime() + 1000 * 60 * 60 * 24);
   return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlight ", woeid), /*#__PURE__*/_react.default.createElement("ul", null, details.consolidated_weather?.map(consolidate => {
-    // const date = new Date(consolidate?.applicable_date);
+    const date = new Date(consolidate?.applicable_date).toDateString();
+    ;
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id
-    }, /*#__PURE__*/_react.default.createElement("p", null, consolidate.applicable_date), /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("p", null, date), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
-    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, consolidate.max_temp), /*#__PURE__*/_react.default.createElement("div", null, consolidate.min_temp)));
+    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, consolidate.max_temp, " \xB0C"), /*#__PURE__*/_react.default.createElement("div", null, consolidate.min_temp, " \xB0C")));
   })));
 }
 

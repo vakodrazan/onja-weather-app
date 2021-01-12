@@ -25,36 +25,27 @@ function WeatherDetails() {
     console.log(details.consolidated_weather);
     const today = new Date();
     const tomorrow = new Date(today.getTime() + (1000 * 60 * 60 * 24));
-    console.log(today);
 
     return (
         <div>
             {loading && <p>Loading...</p>}
 
-            {/* {details.map(detail => (
-                <p>{detail.location_type}</p>
-            ))} */}
-
             <h1>Today's highlight {woeid}</h1>
-            <div>{details.consolidated_weather?.map(consolidate => {
-                const date = new Date(consolidate?.applicable_date);
-                console.log(date == today);
+            <ul>{details.consolidated_weather?.map(consolidate => {
+
+                // const date = new Date(consolidate?.applicable_date);
+
                 return (
-                    <section key={consolidate.id  }>
-                        <p>
-                            {consolidate.humidity}
-                        </p>
+                    <li key={consolidate.id  }>
+                        <p>{consolidate.applicable_date}</p>
+                        <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                         <div>
-                            {date === today ? <div>
-                                <span>Today {date}</span>
-                            </div> : <p>Not the same</p>}
+                            <div>{consolidate.max_temp}</div>
+                            <div>{consolidate.min_temp}</div>
                         </div>
-                        <p>
-                            {/* {consolidate.applicable_date.toLocalString( )} */}
-                        </p>
-                    </section>
+                    </li>
                 )
-            })}</div>
+            })}</ul>
         </div>
     )
 }

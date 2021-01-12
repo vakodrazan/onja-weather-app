@@ -34040,15 +34040,20 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function WeatherDateDetails() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Weather Details"));
+  const {
+    weatherId
+  } = (0, _reactRouterDom.useParams)();
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId));
 }
 
 var _default = WeatherDateDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Context } from '../Context';
 
 function WeatherDetails() {
@@ -35,12 +35,14 @@ function WeatherDetails() {
 
                 return (
                     <li key={consolidate.id}>
-                        <p>{date}</p>
-                        <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
-                        <div>
-                            <div>{consolidate.max_temp} °C</div>
-                            <div>{consolidate.min_temp} °C</div>
-                        </div>
+                        <Link to={`/${woeid}/${consolidate.id}`}>
+                            <p>{date}</p>
+                            <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
+                            <div>
+                                <div>{consolidate.max_temp} °C</div>
+                                <div>{consolidate.min_temp} °C</div>
+                            </div>
+                        </Link>
                     </li>
                 )
             })}</ul>

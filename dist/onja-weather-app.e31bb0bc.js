@@ -34030,7 +34030,25 @@ function Homepage() {
 
 var _default = Homepage;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./SearchResults":"components/SearchResults.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./SearchResults":"components/SearchResults.js"}],"components/WeatherDateDetails.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function WeatherDateDetails() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Weather Details"));
+}
+
+var _default = WeatherDateDetails;
+exports.default = _default;
+},{"react":"node_modules/react/index.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34076,9 +34094,11 @@ function WeatherDetails() {
     ;
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id
+    }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
+      to: `/${woeid}/${consolidate.id}`
     }, /*#__PURE__*/_react.default.createElement("p", null, date), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
-    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, consolidate.max_temp, " \xB0C"), /*#__PURE__*/_react.default.createElement("div", null, consolidate.min_temp, " \xB0C")));
+    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, consolidate.max_temp, " \xB0C"), /*#__PURE__*/_react.default.createElement("div", null, consolidate.min_temp, " \xB0C"))));
   })));
 }
 
@@ -34098,6 +34118,8 @@ var _reactRouterDom = require("react-router-dom");
 
 var _Homepage = _interopRequireDefault(require("./components/Homepage"));
 
+var _WeatherDateDetails = _interopRequireDefault(require("./components/WeatherDateDetails"));
+
 var _WeatherDetails = _interopRequireDefault(require("./components/WeatherDetails"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34105,12 +34127,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_Homepage.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/:woeid"
-  }, /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null))));
+  }, /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+    path: "/:woeid/:weatherId"
+  }, /*#__PURE__*/_react.default.createElement(_WeatherDateDetails.default, null))))));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Homepage":"components/Homepage.js","./components/WeatherDetails":"components/WeatherDetails.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Homepage":"components/Homepage.js","./components/WeatherDateDetails":"components/WeatherDateDetails.js","./components/WeatherDetails":"components/WeatherDetails.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

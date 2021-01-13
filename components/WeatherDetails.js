@@ -26,9 +26,7 @@ function WeatherDetails() {
     return (
         <div>
             {loading && <p>Loading...</p>}
-
-            <h1>Today's highlight {woeid}</h1>
-            <ul>{details.consolidated_weather?.map(consolidate => {
+            <ul>{details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
 
                 const date = new Date(consolidate?.applicable_date).toDateString();
 

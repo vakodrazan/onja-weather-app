@@ -30,6 +30,9 @@ function WeatherDetails() {
 
                 const date = new Date(consolidate?.applicable_date).toDateString();
 
+                // Convert celius to to fahrenheit
+                // const maxtTempF = ((consolidate.max_temp / 5) * 9) + 32;
+
                 return (
                     <li key={consolidate.id}>
                         <Link to={`/${woeid}/${consolidate.id}`}>

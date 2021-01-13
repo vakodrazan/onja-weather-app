@@ -34129,7 +34129,9 @@ function WeatherDetails() {
   }, [woeid]);
   console.log(details.consolidated_weather);
   return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", null, details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
-    const date = new Date(consolidate?.applicable_date).toDateString();
+    const date = new Date(consolidate?.applicable_date).toDateString(); // Convert celius to to fahrenheit
+    // const maxtTempF = ((consolidate.max_temp / 5) * 9) + 32;
+
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id
     }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {

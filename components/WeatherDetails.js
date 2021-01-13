@@ -3,19 +3,18 @@ import { Link, useParams } from 'react-router-dom';
 import { Context } from '../Context';
 
 function WeatherDetails() {
-    const {state} = useContext(Context);
-    const {loading} = state;
+    const {state, dispatch} = useContext(Context);
+    const {loading, details} = state;
 
     const {woeid} = useParams();
 
-    const [details, setDetails] = useState([]);
 
     const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
 
     async function getWeatherDetail() {
         const res = await fetch(WEATHER_URL + woeid);
         const data = await res.json()
-        setDetails(data);
+        dispatch({type: "SHOW_DETAILS", details: data})
     }
 
     useEffect(() => {

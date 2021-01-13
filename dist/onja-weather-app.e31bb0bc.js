@@ -33892,6 +33892,13 @@ function ContextProvider({
           };
         }
 
+      case "SHOW_DETAILS":
+        {
+          return { ...state,
+            details: action.details
+          };
+        }
+
       default:
         {
           return state;
@@ -33899,6 +33906,7 @@ function ContextProvider({
     }
   }, {
     location: [],
+    details: [],
     loading: true,
     query: "san"
   });
@@ -34038,22 +34046,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function WeatherDateDetails() {
   const {
     weatherId
   } = (0, _reactRouterDom.useParams)();
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId));
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    details
+  } = state;
+  if (!details.consolidated_weather) return null;
+  const findDetail = details?.consolidated_weather.find(detail => detail.id === weatherId);
+  console.log(findDetail);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail?.wind_speed), /*#__PURE__*/_react.default.createElement("span", null, findDetail?.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null)));
 }
 
 var _default = WeatherDateDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34073,21 +34095,25 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function WeatherDetails() {
   const {
-    state
+    state,
+    dispatch
   } = (0, _react.useContext)(_Context.Context);
   const {
-    loading
+    loading,
+    details
   } = state;
   const {
     woeid
   } = (0, _reactRouterDom.useParams)();
-  const [details, setDetails] = (0, _react.useState)([]);
   const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
 
   async function getWeatherDetail() {
     const res = await fetch(WEATHER_URL + woeid);
     const data = await res.json();
-    setDetails(data);
+    dispatch({
+      type: "SHOW_DETAILS",
+      details: data
+    });
   }
 
   (0, _react.useEffect)(() => {
@@ -34183,7 +34209,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64607" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49970" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

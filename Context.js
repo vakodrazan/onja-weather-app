@@ -20,12 +20,19 @@ function ContextProvider({children}) {
                     query: action.query
                 }
             }
+            case "SHOW_DETAILS": {
+                return {
+                    ...state,
+                    details: action.details
+                }
+            }
             default: {
                 return state
             }
         }
     }, {
         location: [],
+        details: [],
         loading: true,
         query: "san"
     })

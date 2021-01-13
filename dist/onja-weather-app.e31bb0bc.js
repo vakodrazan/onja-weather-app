@@ -34068,9 +34068,9 @@ function WeatherDateDetails() {
     details
   } = state;
   if (!details.consolidated_weather) return null;
-  const findDetail = details?.consolidated_weather.find(detail => detail.id === weatherId);
-  console.log(findDetail);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail?.wind_speed), /*#__PURE__*/_react.default.createElement("span", null, findDetail?.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null)));
+  const findDetail = details.consolidated_weather?.filter(detail => detail.id !== weatherId);
+  console.log(details.consolidated_weather?.id);
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, details?.consolidated_weather.wind_speed), /*#__PURE__*/_react.default.createElement("span", null, details?.consolidated_weather.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null)));
 }
 
 var _default = WeatherDateDetails;

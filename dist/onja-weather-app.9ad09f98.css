@@ -1,9 +1,34 @@
 body {
     margin: 0;
+    background-color: #1E213A;
+    color: #E7E7EB;
+}
+
+a {
+    color: currentColor;
 }
 
 .container {
     padding: 24px;
+}
+
+progress {
+    border-radius: 80px; 
+    height: 8px;
+}
+    progress::-webkit-progress-bar {
+    background-color: #E7E7EB;
+    border-radius: 80px;
+    height: 8px;
+}
+    progress::-webkit-progress-value {
+    background-color: #FFEC65;
+    border-radius: 80px;
+    height: 8px;
+}
+
+.wrapper {
+    
 }
 
 /*# sourceMappingURL=/onja-weather-app.9ad09f98.css.map */

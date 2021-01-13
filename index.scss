@@ -59,8 +59,12 @@ ul {
 
 .content_detail {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 26px;
+    
+    @media (min-width: $desktop_breakpoint) {
+        grid-template-columns: repeat(5, 1fr);
+    }
 
     &_item {
         background-color: #1E213A;
@@ -68,6 +72,12 @@ ul {
         padding-left: 20px;
         padding-right: 18px;
         text-align: center;
+        
+        a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
         img {
             padding-top: 15px;
@@ -77,6 +87,27 @@ ul {
             display: flex;
             justify-content: space-between;
             padding-top: 31px;
+        }
+    }
+}
+
+
+.detail_highlight {
+    display: grid;
+    gap: 32px;
+
+    &_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #1E213A;
+        padding-top: 22px;
+        padding-bottom: 35px;
+
+        .percentage {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
     }
 }

@@ -15,20 +15,17 @@ function WeatherDateDetails() {
         <div>
             <h1>{new Date(findDetail?.applicable_date).toDateString()}</h1>
             {findDetail && 
-                <ul>
-                    <li>
-                        <p>Wind Status</p>
-                        <strong>{findDetail.wind_speed} mph</strong>
-                        <span>{findDetail.wind_direction_compass}</span>
+                <ul className="detail_highlight">
+                    <li className="detail_highlight_item">
                         <p>Wind Status</p>
                         <strong>{findDetail.wind_speed} mph</strong>
                         <span>{findDetail.wind_direction_compass}</span>
                     </li>
-                    <li>
+                    <li className="detail_highlight_item">
                         <p>Humidity</p>
                         <strong>{findDetail.humidity} mph</strong>
                         <div>
-                            <div>
+                            <div className="percentage">
                                 <span>01</span>
                                 <span>50</span>
                                 <span>100</span>
@@ -37,11 +34,11 @@ function WeatherDateDetails() {
                             <label>%</label>
                         </div>
                     </li>
-                    <li>
+                    <li className="detail_highlight_item">
                         <p>Visibility</p>
                         <strong>{Math.round(findDetail.visibility)} miles</strong>
                     </li>
-                    <li>
+                    <li className="detail_highlight_item">
                         <p>Air Pressure</p>
                         <strong>{findDetail.air_pressure} mb</strong>
                     </li>

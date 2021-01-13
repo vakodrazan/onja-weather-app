@@ -47,8 +47,13 @@ ul {
 
 .content_detail {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 26px;
+}
+@media (min-width: 1140px) {
+  .content_detail {
+    grid-template-columns: repeat(5, 1fr);
+  }
 }
 .content_detail_item {
   background-color: #1E213A;
@@ -57,6 +62,11 @@ ul {
   padding-right: 18px;
   text-align: center;
 }
+.content_detail_item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .content_detail_item img {
   padding-top: 15px;
 }
@@ -64,6 +74,24 @@ ul {
   display: flex;
   justify-content: space-between;
   padding-top: 31px;
+}
+
+.detail_highlight {
+  display: grid;
+  gap: 32px;
+}
+.detail_highlight_item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #1E213A;
+  padding-top: 22px;
+  padding-bottom: 35px;
+}
+.detail_highlight_item .percentage {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=/onja-weather-app.80ee2152.css.map */

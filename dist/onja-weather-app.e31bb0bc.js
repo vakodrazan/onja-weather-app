@@ -34075,10 +34075,22 @@ function WeatherDateDetails() {
   if (!details.consolidated_weather) return null;
   const findDetail = details?.consolidated_weather ? details.consolidated_weather.find(detail => String(detail.id) !== weatherId) : "";
   console.log(findDetail);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, new Date(findDetail?.applicable_date).toDateString()), findDetail && /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.wind_speed, " mph"), /*#__PURE__*/_react.default.createElement("span", null, findDetail.wind_direction_compass), /*#__PURE__*/_react.default.createElement("p", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.wind_speed, " mph"), /*#__PURE__*/_react.default.createElement("span", null, findDetail.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, "Humidity"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.humidity, " mph"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, "01"), /*#__PURE__*/_react.default.createElement("span", null, "50"), /*#__PURE__*/_react.default.createElement("span", null, "100")), /*#__PURE__*/_react.default.createElement("progress", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, new Date(findDetail?.applicable_date).toDateString()), findDetail && /*#__PURE__*/_react.default.createElement("ul", {
+    className: "detail_highlight"
+  }, /*#__PURE__*/_react.default.createElement("li", {
+    className: "detail_highlight_item"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.wind_speed, " mph"), /*#__PURE__*/_react.default.createElement("span", null, findDetail.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", {
+    className: "detail_highlight_item"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Humidity"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.humidity, " mph"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+    className: "percentage"
+  }, /*#__PURE__*/_react.default.createElement("span", null, "01"), /*#__PURE__*/_react.default.createElement("span", null, "50"), /*#__PURE__*/_react.default.createElement("span", null, "100")), /*#__PURE__*/_react.default.createElement("progress", {
     value: findDetail.humidity,
     max: "100"
-  }, " 32% "), /*#__PURE__*/_react.default.createElement("label", null, "%"))), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, "Visibility"), /*#__PURE__*/_react.default.createElement("strong", null, Math.round(findDetail.visibility), " miles")), /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("p", null, "Air Pressure"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.air_pressure, " mb"))));
+  }, " 32% "), /*#__PURE__*/_react.default.createElement("label", null, "%"))), /*#__PURE__*/_react.default.createElement("li", {
+    className: "detail_highlight_item"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Visibility"), /*#__PURE__*/_react.default.createElement("strong", null, Math.round(findDetail.visibility), " miles")), /*#__PURE__*/_react.default.createElement("li", {
+    className: "detail_highlight_item"
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Air Pressure"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail.air_pressure, " mb"))));
 }
 
 var _default = WeatherDateDetails;

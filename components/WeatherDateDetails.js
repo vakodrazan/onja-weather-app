@@ -8,8 +8,8 @@ function WeatherDateDetails() {
     const { state, dispatch} = useContext(Context);
     const {details} = state;
     if (!details.consolidated_weather) return null
-    const findDetail = details.consolidated_weather?.filter(detail => detail.id !== weatherId);
-    console.log(details.consolidated_weather?.id);
+    const findDetail = details?.consolidated_weather ? details.consolidated_weather?.filter(detail => detail.id !== weatherId) : "";
+    // console.log(details.consolidated_weather?.id);
 
     return (
         <div>
@@ -18,7 +18,7 @@ function WeatherDateDetails() {
             <ul>
                 <li>
                     <span>Wind Status</span>
-                    <strong>{details?.consolidated_weather.wind_speed}</strong>
+                    <strong>{findDetail?.wind_speed}</strong>
                     <span>{details?.consolidated_weather.wind_direction_compass}</span>
                 </li>
                 <li></li>

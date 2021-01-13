@@ -30,16 +30,16 @@ function WeatherDetails() {
             <h1>Today's highlight {woeid}</h1>
             <ul>{details.consolidated_weather?.map(consolidate => {
 
-                const date = new Date(consolidate?.applicable_date).toDateString();;
+                const date = new Date(consolidate?.applicable_date).toDateString();
 
                 return (
                     <li key={consolidate.id}>
                         <Link to={`/${woeid}/${consolidate.id}`}>
-                            <p>{date}</p>
+                            <time dateTime={consolidate?.applicable_date}>{date}</time>
                             <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                             <div>
-                                <div>{consolidate.max_temp} °C</div>
-                                <div>{consolidate.min_temp} °C</div>
+                                <span>{Math.round(consolidate.max_temp)} °C</span>
+                                <span>{Math.round(consolidate.min_temp)} °C</span>
                             </div>
                         </Link>
                     </li>

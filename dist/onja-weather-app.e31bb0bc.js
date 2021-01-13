@@ -33908,7 +33908,7 @@ function ContextProvider({
     location: [],
     details: [],
     loading: true,
-    query: "san"
+    query: "helsinki"
   });
 
   async function fetchData() {
@@ -34005,13 +34005,18 @@ function SearchResults() {
   } = (0, _react.useContext)(_Context.Context);
   const {
     loading,
-    location
+    location,
+    details
   } = state;
   return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", null, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
     key: loc.woeid
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: `/${loc.woeid}`
-  }, loc.title)))));
+  }, loc.title)))), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
+  }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
+    dateTime: details.consolidated_weather[0].applicable_date
+  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
 }
 
 var _default = SearchResults;
@@ -34068,9 +34073,9 @@ function WeatherDateDetails() {
     details
   } = state;
   if (!details.consolidated_weather) return null;
-  const findDetail = details.consolidated_weather?.filter(detail => detail.id !== weatherId);
-  console.log(details.consolidated_weather?.id);
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, details?.consolidated_weather.wind_speed), /*#__PURE__*/_react.default.createElement("span", null, details?.consolidated_weather.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null)));
+  const findDetail = details?.consolidated_weather ? details.consolidated_weather?.filter(detail => detail.id !== weatherId) : ""; // console.log(details.consolidated_weather?.id);
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Weather Details! ", weatherId), /*#__PURE__*/_react.default.createElement("ul", null, /*#__PURE__*/_react.default.createElement("li", null, /*#__PURE__*/_react.default.createElement("span", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, findDetail?.wind_speed), /*#__PURE__*/_react.default.createElement("span", null, details?.consolidated_weather.wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null), /*#__PURE__*/_react.default.createElement("li", null)));
 }
 
 var _default = WeatherDateDetails;
@@ -34122,14 +34127,15 @@ function WeatherDetails() {
   console.log(details.consolidated_weather);
   return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlight ", woeid), /*#__PURE__*/_react.default.createElement("ul", null, details.consolidated_weather?.map(consolidate => {
     const date = new Date(consolidate?.applicable_date).toDateString();
-    ;
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id
     }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
       to: `/${woeid}/${consolidate.id}`
-    }, /*#__PURE__*/_react.default.createElement("p", null, date), /*#__PURE__*/_react.default.createElement("img", {
+    }, /*#__PURE__*/_react.default.createElement("time", {
+      dateTime: consolidate?.applicable_date
+    }, date), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
-    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, consolidate.max_temp, " \xB0C"), /*#__PURE__*/_react.default.createElement("div", null, consolidate.min_temp, " \xB0C"))));
+    }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", null, Math.round(consolidate.max_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("span", null, Math.round(consolidate.min_temp), " \xB0C"))));
   })));
 }
 

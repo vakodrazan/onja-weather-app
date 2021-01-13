@@ -34,7 +34,7 @@ function ContextProvider({children}) {
         location: [],
         details: [],
         loading: true,
-        query: "san"
+        query: "helsinki"
     })
 
     async function fetchData() {

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useParams, Route, Switch } from 'react-router-dom';
 
 import { Context } from '../Context';
-import WeatherDateDetails from './WeatherDateDetails';
+import WeatherDetailsHighlight from './WeatherDetailsHighlight';
 
 function WeatherDetails() {
     const {state, dispatch} = useContext(Context);
@@ -37,23 +37,17 @@ function WeatherDetails() {
 
                 return (
                     <li key={consolidate.id} className="content_detail_item">
-                        <Link to={`/${woeid}/${consolidate.id}`}>
-                            <time dateTime={consolidate?.applicable_date}>{date}</time>
-                            <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
-                            <div className="content_detail_item_temp">
-                                <span>{Math.round(consolidate.max_temp)} °C</span>
-                                <span>{Math.round(consolidate.min_temp)} °C</span>
-                            </div>
-                        </Link>
+                        <time dateTime={consolidate?.applicable_date}>{date}</time>
+                        <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
+                        <div className="content_detail_item_temp">
+                            <span>{Math.round(consolidate.max_temp)} °C</span>
+                            <span>{Math.round(consolidate.min_temp)} °C</span>
+                        </div>
                     </li>
                 )
             })}</ul>
 
-            <Switch>
-                <Route path="/:woeid/:weatherId">
-                    <WeatherDateDetails />
-                </Route>
-            </Switch>
+            <WeatherDetailsHighlight />
         </div>
     )
 }

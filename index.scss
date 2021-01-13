@@ -22,11 +22,17 @@ a {
 
 .container {
     padding: 24px;
+
+    @media (min-width: $desktop_breakpoint) {
+        max-width: $desktop_breakpoint;
+        margin: auto;
+    }
 }
 
 progress {
     border-radius: 80px; 
     height: 8px;
+    max-width: 100%;
 
     &::-webkit-progress-bar {
         background-color: #E7E7EB;
@@ -72,20 +78,18 @@ ul {
         padding-left: 20px;
         padding-right: 18px;
         text-align: center;
-        
-        a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         img {
             padding-top: 15px;
         }
 
         &_temp {
-            display: flex;
+            @include flex-layout();
             justify-content: space-between;
+            gap: 16px;
             padding-top: 31px;
         }
     }
@@ -95,6 +99,11 @@ ul {
 .detail_highlight {
     display: grid;
     gap: 32px;
+
+    @media (min-width: $desktop_breakpoint) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+    }
 
     &_item {
         display: flex;

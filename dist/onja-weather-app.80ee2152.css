@@ -12,10 +12,17 @@ a {
 .container {
   padding: 24px;
 }
+@media (min-width: 1140px) {
+  .container {
+    max-width: 1140px;
+    margin: auto;
+  }
+}
 
 progress {
   border-radius: 80px;
   height: 8px;
+  max-width: 100%;
 }
 progress::-webkit-progress-bar {
   background-color: #E7E7EB;
@@ -61,8 +68,6 @@ ul {
   padding-left: 20px;
   padding-right: 18px;
   text-align: center;
-}
-.content_detail_item a {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,13 +77,21 @@ ul {
 }
 .content_detail_item_temp {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  gap: 16px;
   padding-top: 31px;
 }
 
 .detail_highlight {
   display: grid;
   gap: 32px;
+}
+@media (min-width: 1140px) {
+  .detail_highlight {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+  }
 }
 .detail_highlight_item {
   display: flex;

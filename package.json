@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/vakodrazan/onja-weather-app#readme",
   "dependencies": {
+    "date-fns": "^2.16.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0"

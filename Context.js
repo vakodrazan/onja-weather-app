@@ -26,6 +26,18 @@ function ContextProvider({children}) {
                     details: action.details
                 }
             }
+            case "OPEN_POPUP": {
+                return {
+                    ...state,
+                    isOpen: action.isOpen
+                }
+            }
+            case "CLOSE_POPUP": {
+                return {
+                    ...state,
+                    isOpen: action.isOpen
+                }
+            }
             default: {
                 return state
             }
@@ -34,7 +46,8 @@ function ContextProvider({children}) {
         location: [],
         details: [],
         loading: true,
-        query: "helsinki"
+        query: "helsinki",
+        isOpen: false
     })
 
     async function fetchData() {

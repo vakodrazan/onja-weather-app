@@ -33899,6 +33899,20 @@ function ContextProvider({
           };
         }
 
+      case "OPEN_POPUP":
+        {
+          return { ...state,
+            isOpen: action.isOpen
+          };
+        }
+
+      case "CLOSE_POPUP":
+        {
+          return { ...state,
+            isOpen: action.isOpen
+          };
+        }
+
       default:
         {
           return state;
@@ -33908,7 +33922,8 @@ function ContextProvider({
     location: [],
     details: [],
     loading: true,
-    query: "helsinki"
+    query: "helsinki",
+    isOpen: false
   });
 
   async function fetchData() {
@@ -33931,56 +33946,7 @@ function ContextProvider({
     }
   }, children);
 }
-},{"react":"node_modules/react/index.js"}],"components/SearchForm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _Context = require("../Context");
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function SearchForm() {
-  const {
-    state,
-    dispatch,
-    fetchData
-  } = (0, _react.useContext)(_Context.Context);
-  const {
-    query
-  } = state;
-
-  function searchLocation(e) {
-    e.preventDefault();
-    dispatch({
-      type: "GET_DATA",
-      location: fetchData()
-    });
-  }
-
-  return /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: searchLocation
-  }, /*#__PURE__*/_react.default.createElement("input", {
-    type: "text",
-    placeholder: "Search for places",
-    value: query,
-    onChange: e => dispatch({
-      type: "ON_CHANGE",
-      query: e.target.value
-    })
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search"));
-}
-
-var _default = SearchForm;
-exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/SearchResults.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js"}],"components/SearchResults.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34000,27 +33966,110 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function SearchResults() {
   const {
-    state
+    state,
+    dispatch
   } = (0, _react.useContext)(_Context.Context);
   const {
     loading,
     location,
-    details
+    details,
+    isOpen
   } = state;
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", null, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
+
+  function closePopup() {
+    dispatch({
+      type: "CLOSE_POPUP",
+      isOpen: false
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isOpen && /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", null, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
     key: loc.woeid
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: `/${loc.woeid}`
+    to: `/${loc.woeid}`,
+    onClick: closePopup
   }, loc.title)))), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
   }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
+  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : ""));
 }
 
 var _default = SearchResults;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/Homepage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/SearchForm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../Context");
+
+var _SearchResults = _interopRequireDefault(require("./SearchResults"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function SearchForm() {
+  const {
+    state,
+    dispatch,
+    fetchData
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    query,
+    isOpen
+  } = state;
+
+  function opePopup() {
+    dispatch({
+      type: "OPEN_POPUP",
+      isOpen: true
+    });
+  }
+
+  function closePopup() {
+    dispatch({
+      type: "CLOSE_POPUP",
+      isOpen: false
+    });
+  }
+
+  function searchLocation(e) {
+    e.preventDefault();
+    dispatch({
+      type: "GET_DATA",
+      location: fetchData()
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, !isOpen ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: opePopup
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("span", null, "gps_fixed")) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+    onClick: closePopup
+  }, "X"), /*#__PURE__*/_react.default.createElement("form", {
+    onSubmit: searchLocation
+  }, /*#__PURE__*/_react.default.createElement("input", {
+    type: "text",
+    placeholder: "Search for places",
+    value: query,
+    onChange: e => dispatch({
+      type: "ON_CHANGE",
+      query: e.target.value
+    })
+  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null)));
+}
+
+var _default = SearchForm;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/Homepage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34032,17 +34081,15 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SearchForm = _interopRequireDefault(require("./SearchForm"));
 
-var _SearchResults = _interopRequireDefault(require("./SearchResults"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Homepage() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null));
 }
 
 var _default = Homepage;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./SearchResults":"components/SearchResults.js"}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js"}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34230,7 +34277,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49701" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50804" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

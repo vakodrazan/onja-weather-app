@@ -7,7 +7,7 @@ function SearchForm() {
 
     function searchLocation(e) {
         e.preventDefault();
-        dispatch({type: "GET DATA", location: fetchData()})
+        dispatch({type: "GET_DATA", location: fetchData()})
     }
 
     return (
@@ -17,7 +17,7 @@ function SearchForm() {
                 placeholder="Search for places" 
                 value={query} 
                 onChange={(e) => 
-                    dispatch({type: "ON CHANGE", query: e.target.value})
+                    dispatch({type: "ON_CHANGE", query: e.target.value})
                 } 
             />
             <button>Search</button>

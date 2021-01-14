@@ -7,14 +7,14 @@ const URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api
 function ContextProvider({children}) {
     const [state, dispatch] = useReducer((state, action) => {
         switch (action.type) {
-            case "GET DATA": {
+            case "GET_DATA": {
                 return {
                     ...state,
                     loading: false,
                     location: action.location
                 }
             }
-            case "ON CHANGE": {
+            case "ON_CHANGE": {
                 return {
                     ...state,
                     query: action.query
@@ -40,7 +40,7 @@ function ContextProvider({children}) {
     async function fetchData() {
         const res = await fetch(URL + state.query);
         const data = await res.json();
-        dispatch({type: "GET DATA", location: data})
+        dispatch({type: "GET_DATA", location: data})
     }
 
     useEffect(() => {

@@ -33877,7 +33877,7 @@ function ContextProvider({
 }) {
   const [state, dispatch] = (0, _react.useReducer)((state, action) => {
     switch (action.type) {
-      case "GET DATA":
+      case "GET_DATA":
         {
           return { ...state,
             loading: false,
@@ -33885,7 +33885,7 @@ function ContextProvider({
           };
         }
 
-      case "ON CHANGE":
+      case "ON_CHANGE":
         {
           return { ...state,
             query: action.query
@@ -33915,7 +33915,7 @@ function ContextProvider({
     const res = await fetch(URL + state.query);
     const data = await res.json();
     dispatch({
-      type: "GET DATA",
+      type: "GET_DATA",
       location: data
     });
   }
@@ -33960,7 +33960,7 @@ function SearchForm() {
   function searchLocation(e) {
     e.preventDefault();
     dispatch({
-      type: "GET DATA",
+      type: "GET_DATA",
       location: fetchData()
     });
   }
@@ -33972,7 +33972,7 @@ function SearchForm() {
     placeholder: "Search for places",
     value: query,
     onChange: e => dispatch({
-      type: "ON CHANGE",
+      type: "ON_CHANGE",
       query: e.target.value
     })
   }), /*#__PURE__*/_react.default.createElement("button", null, "Search"));

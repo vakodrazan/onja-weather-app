@@ -1,16 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams, Route, Switch } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
 
 import { Context } from '../Context';
 import WeatherDetailsHighlight from './WeatherDetailsHighlight';
+import {months, days} from "./DateArray";
 
 function WeatherDetails() {
     const {state, dispatch} = useContext(Context);
     const {loading, details} = state;
 
     const {woeid} = useParams();
-
-
+ 
     const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
 
     async function getWeatherDetail() {
@@ -31,11 +31,15 @@ function WeatherDetails() {
             <ul className="content_detail">
                 {details.consolidated_weather 
                     && details.consolidated_weather?.slice(1).map(consolidate => {
-                        const date = new Date(consolidate?.applicable_date).toDateString();
+                        // const date = new Date(consolidate?.applicable_date).toDateString();
+                        const date = new Date(consolidate?.applicable_date);
+                        const day = days[date.getDay()];
+                        const month = months[date.getMonth()];
+                        const numericDate = date.getDate();
 
                         return (
                             <li key={consolidate.id} className="content_detail_item">
-                                <time dateTime={consolidate?.applicable_date}>{date}</time>
+                                <time dateTime={consolidate?.applicable_date}>{day}, {numericDate} {month}</time>
                                 <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                                 <div className="content_detail_item_temp">
                                     <span>{Math.round(consolidate.max_temp)} °C</span>

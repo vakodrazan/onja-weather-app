@@ -34068,7 +34068,18 @@ function SearchForm() {
 
 var _default = SearchForm;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/DateArray.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.months = exports.days = void 0;
+const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+exports.days = days;
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+exports.months = months;
+},{}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34079,6 +34090,8 @@ exports.default = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 var _Context = require("../Context");
+
+var _DateArray = require("./DateArray");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34091,18 +34104,25 @@ function TodayWeatherDetail() {
   const {
     details
   } = state;
+  const date = new Date(details.consolidated_weather && details.consolidated_weather[0].applicable_date);
+
+  const day = _DateArray.days[date.getDay()];
+
+  const month = _DateArray.months[date.getMonth()];
+
+  const numericDate = date.getDate();
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
   }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
+  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
 }
 
 var _default = TodayWeatherDetail;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./DateArray":"components/DateArray.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34187,6 +34207,8 @@ var _Context = require("../Context");
 
 var _WeatherDetailsHighlight = _interopRequireDefault(require("./WeatherDetailsHighlight"));
 
+var _DateArray = require("./DateArray");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34224,13 +34246,20 @@ function WeatherDetails() {
   }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map(consolidate => {
-    const date = new Date(consolidate?.applicable_date).toDateString();
+    // const date = new Date(consolidate?.applicable_date).toDateString();
+    const date = new Date(consolidate?.applicable_date);
+
+    const day = _DateArray.days[date.getDay()];
+
+    const month = _DateArray.months[date.getMonth()];
+
+    const numericDate = date.getDate();
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id,
       className: "content_detail_item"
     }, /*#__PURE__*/_react.default.createElement("time", {
       dateTime: consolidate?.applicable_date
-    }, date), /*#__PURE__*/_react.default.createElement("img", {
+    }, day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"
@@ -34240,7 +34269,7 @@ function WeatherDetails() {
 
 var _default = WeatherDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js","./DateArray":"components/DateArray.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -3,14 +3,17 @@ import { useParams } from 'react-router-dom'
 import { Context } from '../Context';
 
 function WeatherDetailsHighlight() {
-    const { state, dispatch} = useContext(Context);
-    const {details} = state;
+    const { state } = useContext(Context);
+    const {details, loading} = state;
 
     const highlightDetail = details.consolidated_weather;
 
     return (
         <div>
             <h1>Today's highlights</h1>
+
+            {loading && <p>Loading...</p>}
+
             {highlightDetail && 
                 <ul className="detail_highlight">
                     <li className="detail_highlight_item">

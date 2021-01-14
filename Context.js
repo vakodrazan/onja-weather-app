@@ -23,6 +23,7 @@ function ContextProvider({children}) {
             case "SHOW_DETAILS": {
                 return {
                     ...state,
+                    loading: false,
                     details: action.details
                 }
             }
@@ -38,6 +39,12 @@ function ContextProvider({children}) {
                     isOpen: action.isOpen
                 }
             }
+            case "UPDATE_FORCAST_VALUE": {
+                return {
+                    ...state,
+                    degreeType: action.degreeType
+                }
+            }
             default: {
                 return state
             }
@@ -47,7 +54,8 @@ function ContextProvider({children}) {
         details: [],
         loading: true,
         query: "helsinki",
-        isOpen: false
+        isOpen: false,
+        degreeType: "celsius"
     })
 
     async function fetchData() {

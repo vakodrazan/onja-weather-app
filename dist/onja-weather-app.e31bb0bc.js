@@ -33895,6 +33895,7 @@ function ContextProvider({
       case "SHOW_DETAILS":
         {
           return { ...state,
+            loading: false,
             details: action.details
           };
         }
@@ -33913,6 +33914,13 @@ function ContextProvider({
           };
         }
 
+      case "UPDATE_FORCAST_VALUE":
+        {
+          return { ...state,
+            degreeType: action.degreeType
+          };
+        }
+
       default:
         {
           return state;
@@ -33923,7 +33931,8 @@ function ContextProvider({
     details: [],
     loading: true,
     query: "helsinki",
-    isOpen: false
+    isOpen: false,
+    degreeType: "celsius"
   });
 
   async function fetchData() {
@@ -34102,7 +34111,9 @@ function TodayWeatherDetail() {
     state
   } = (0, _react.useContext)(_Context.Context);
   const {
-    details
+    details,
+    loading,
+    degreeType
   } = state;
   const date = new Date(details.consolidated_weather && details.consolidated_weather[0].applicable_date);
 
@@ -34111,11 +34122,14 @@ function TodayWeatherDetail() {
   const month = _DateArray.months[date.getMonth()];
 
   const numericDate = date.getDate();
+  const celsius = Math.round(details.consolidated_weather && details.consolidated_weather[0].min_temp);
+  const fahrenheit = Math.round(celsius * 9 / 5 + 32);
+  ;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
-  }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
+  }), /*#__PURE__*/_react.default.createElement("p", null, degreeType === "celsius" ? celsius + "°C" : fahrenheit + "°F"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
   }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
 }
@@ -34164,14 +34178,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function WeatherDetailsHighlight() {
   const {
-    state,
-    dispatch
+    state
   } = (0, _react.useContext)(_Context.Context);
   const {
-    details
+    details,
+    loading
   } = state;
   const highlightDetail = details.consolidated_weather;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
@@ -34191,7 +34205,60 @@ function WeatherDetailsHighlight() {
 
 var _default = WeatherDetailsHighlight;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/TemperatureConverter.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function TemperatureConverter() {
+  const {
+    state,
+    dispatch
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    degreeType
+  } = state;
+
+  function updateDegreeForcast(e) {
+    dispatch({
+      type: "UPDATE_FORCAST_VALUE",
+      degreeType: e.target.value
+    });
+  }
+
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "radio",
+    id: "celsius",
+    value: "celsius",
+    checked: degreeType === "celsius",
+    onChange: updateDegreeForcast
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "celsius"
+  }, "\xB0C")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+    type: "radio",
+    id: "farenheit",
+    value: "fahrenheit",
+    checked: degreeType === "fahrenheit",
+    onChange: updateDegreeForcast
+  }), /*#__PURE__*/_react.default.createElement("label", {
+    htmlFor: "farenheit"
+  }, "\xB0F")));
+}
+
+var _default = TemperatureConverter;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/WeatherDetails.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34209,6 +34276,8 @@ var _WeatherDetailsHighlight = _interopRequireDefault(require("./WeatherDetailsH
 
 var _DateArray = require("./DateArray");
 
+var _TemperatureConverter = _interopRequireDefault(require("./TemperatureConverter"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34222,7 +34291,8 @@ function WeatherDetails() {
   } = (0, _react.useContext)(_Context.Context);
   const {
     loading,
-    details
+    details,
+    degreeType
   } = state;
   const {
     woeid
@@ -34243,7 +34313,7 @@ function WeatherDetails() {
   }, [woeid]);
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
+  }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map(consolidate => {
     // const date = new Date(consolidate?.applicable_date).toDateString();
@@ -34254,6 +34324,11 @@ function WeatherDetails() {
     const month = _DateArray.months[date.getMonth()];
 
     const numericDate = date.getDate();
+    const celsiusMaxTemp = Math.round(consolidate.max_temp);
+    const fahrenheitMaxTemp = Math.round(celsiusMaxTemp * 9 / 5 + 32);
+    const celsiusMinTemp = Math.round(consolidate.min_temp);
+    const fahrenheitMinTemp = Math.round(celsiusMinTemp * 9 / 5 + 32);
+    ;
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id,
       className: "content_detail_item"
@@ -34263,13 +34338,13 @@ function WeatherDetails() {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"
-    }, /*#__PURE__*/_react.default.createElement("span", null, Math.round(consolidate.max_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("span", null, Math.round(consolidate.min_temp), " \xB0C")));
+    }, /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"), /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F")));
   })), /*#__PURE__*/_react.default.createElement(_WeatherDetailsHighlight.default, null));
 }
 
 var _default = WeatherDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js","./DateArray":"components/DateArray.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js","./DateArray":"components/DateArray.js","./TemperatureConverter":"components/TemperatureConverter.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

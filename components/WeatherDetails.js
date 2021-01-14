@@ -33,21 +33,26 @@ function WeatherDetails() {
 
             <ul className="content_detail">
                 {details.consolidated_weather 
-                    && details.consolidated_weather?.slice(1).map(consolidate => {
+                    && details.consolidated_weather?.slice(1).map((consolidate, index) => {
                         // const date = new Date(consolidate?.applicable_date).toDateString();
                         const date = new Date(consolidate?.applicable_date);
                         const day = days[date.getDay()];
                         const month = months[date.getMonth()];
                         const numericDate = date.getDate();
 
+                        console.log(index);
+
+                        const finalDateResult = `${day}, ${numericDate} ${month}`
+
                         const celsiusMaxTemp = Math.round(consolidate.max_temp);
                         const fahrenheitMaxTemp = Math.round((celsiusMaxTemp * 9/5) + 32);
+
                         const celsiusMinTemp = Math.round(consolidate.min_temp);
-                        const fahrenheitMinTemp = Math.round((celsiusMinTemp * 9/5) + 32);;
+                        const fahrenheitMinTemp = Math.round((celsiusMinTemp * 9/5) + 32);
 
                         return (
                             <li key={consolidate.id} className="content_detail_item">
-                                <time dateTime={consolidate?.applicable_date}>{day}, {numericDate} {month}</time>
+                                <time dateTime={consolidate?.applicable_date}>{ finalDateResult}</time>
                                 <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                                 <div className="content_detail_item_temp">
                                     <span>{degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"}</span>

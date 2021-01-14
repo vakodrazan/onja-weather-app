@@ -4,7 +4,7 @@ import TodayWeatherDetail from './TodayWeatherDetail'
 
 function Header() {
     return (
-        <div>
+        <div className="place_finder">
             <SearchForm />
             <TodayWeatherDetail />
         </div>

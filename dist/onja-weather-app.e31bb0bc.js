@@ -34153,7 +34153,9 @@ var _TodayWeatherDetail = _interopRequireDefault(require("./TodayWeatherDetail")
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Header() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null), /*#__PURE__*/_react.default.createElement(_TodayWeatherDetail.default, null));
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "place_finder"
+  }, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null), /*#__PURE__*/_react.default.createElement(_TodayWeatherDetail.default, null));
 }
 
 var _default = Header;
@@ -34315,7 +34317,7 @@ function WeatherDetails() {
     className: "content"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
-  }, details.consolidated_weather && details.consolidated_weather?.slice(1).map(consolidate => {
+  }, details.consolidated_weather && details.consolidated_weather?.slice(1).map((consolidate, index) => {
     // const date = new Date(consolidate?.applicable_date).toDateString();
     const date = new Date(consolidate?.applicable_date);
 
@@ -34324,17 +34326,18 @@ function WeatherDetails() {
     const month = _DateArray.months[date.getMonth()];
 
     const numericDate = date.getDate();
+    console.log(index);
+    const finalDateResult = `${day}, ${numericDate} ${month}`;
     const celsiusMaxTemp = Math.round(consolidate.max_temp);
     const fahrenheitMaxTemp = Math.round(celsiusMaxTemp * 9 / 5 + 32);
     const celsiusMinTemp = Math.round(consolidate.min_temp);
     const fahrenheitMinTemp = Math.round(celsiusMinTemp * 9 / 5 + 32);
-    ;
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id,
       className: "content_detail_item"
     }, /*#__PURE__*/_react.default.createElement("time", {
       dateTime: consolidate?.applicable_date
-    }, day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("img", {
+    }, finalDateResult), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"

@@ -33959,7 +33959,6 @@ function SearchForm() {
 
   function searchLocation(e) {
     e.preventDefault();
-    console.log("Results of search", query);
     dispatch({
       type: "GET DATA",
       location: fetchData()
@@ -34138,7 +34137,6 @@ function WeatherDetails() {
   (0, _react.useEffect)(() => {
     getWeatherDetail();
   }, [woeid]);
-  console.log(details.consolidated_weather);
   return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
@@ -34232,7 +34230,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59124" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49701" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -7,7 +7,6 @@ function SearchForm() {
 
     function searchLocation(e) {
         e.preventDefault();
-        console.log("Results of search", query);
         dispatch({type: "GET DATA", location: fetchData()})
     }
 

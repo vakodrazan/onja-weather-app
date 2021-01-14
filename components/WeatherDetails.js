@@ -23,8 +23,6 @@ function WeatherDetails() {
         getWeatherDetail();
     }, [woeid])
 
-    console.log(details.consolidated_weather);
-
     return (
         <div>
             {loading && <p>Loading...</p>}

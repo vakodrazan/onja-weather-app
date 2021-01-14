@@ -20,7 +20,7 @@ a {
     text-decoration: none;
 }
 
-.container {
+.content {
     padding: 24px;
 
     @media (min-width: $desktop_breakpoint) {
@@ -119,4 +119,26 @@ ul {
             justify-content: space-between;
         }
     }
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &_button {
+        font-size: 16px;
+        font-weight: 500;
+        background: #6E707A;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        color: #E7E7EB;
+        width: 161px;
+        height: 40px;
+    }
+}
+
+.popup {
+    height: 672px;
+    position: fixed;
+    background-color: #1E213A;
 }

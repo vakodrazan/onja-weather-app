@@ -33972,7 +33972,6 @@ function SearchResults() {
   const {
     loading,
     location,
-    details,
     isOpen
   } = state;
 
@@ -33988,11 +33987,7 @@ function SearchResults() {
   }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
     to: `/${loc.woeid}`,
     onClick: closePopup
-  }, loc.title)))), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
-    src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
-  }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
-    dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : ""));
+  }, loc.title))))));
 }
 
 var _default = SearchResults;
@@ -34050,9 +34045,16 @@ function SearchForm() {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, !isOpen ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, !isOpen ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "search"
+  }, /*#__PURE__*/_react.default.createElement("button", {
+    className: "search_button",
     onClick: opePopup
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("span", null, "gps_fixed")) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("button", {
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("span", null, "gps_fixed")) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", {
+    className: "popup"
+  }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: closePopup
   }, "X"), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
@@ -34069,7 +34071,41 @@ function SearchForm() {
 
 var _default = SearchForm;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/Homepage.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function TodayWeatherDetail() {
+  const {
+    state
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    details
+  } = state;
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+    src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
+  }), /*#__PURE__*/_react.default.createElement("p", null, Math.round(details.consolidated_weather[0].min_temp), " \xB0C"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
+    dateTime: details.consolidated_weather[0].applicable_date
+  }, "Today . ", new Date(details.consolidated_weather[0].applicable_date).toDateString()), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
+}
+
+var _default = TodayWeatherDetail;
+exports.default = _default;
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34081,15 +34117,17 @@ var _react = _interopRequireDefault(require("react"));
 
 var _SearchForm = _interopRequireDefault(require("./SearchForm"));
 
+var _TodayWeatherDetail = _interopRequireDefault(require("./TodayWeatherDetail"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Homepage() {
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null));
+function Header() {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_SearchForm.default, null), /*#__PURE__*/_react.default.createElement(_TodayWeatherDetail.default, null));
 }
 
-var _default = Homepage;
+var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js"}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./TodayWeatherDetail":"components/TodayWeatherDetail.js"}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34184,7 +34222,9 @@ function WeatherDetails() {
   (0, _react.useEffect)(() => {
     getWeatherDetail();
   }, [woeid]);
-  return /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
     const date = new Date(consolidate?.applicable_date).toDateString(); // Convert celius to to fahrenheit
@@ -34217,7 +34257,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _Homepage = _interopRequireDefault(require("./components/Homepage"));
+var _Header = _interopRequireDefault(require("./components/Header"));
 
 var _WeatherDetails = _interopRequireDefault(require("./components/WeatherDetails"));
 
@@ -34226,14 +34266,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper"
-  }, /*#__PURE__*/_react.default.createElement(_Homepage.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
     path: "/:woeid"
   }, /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null))));
 }
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Homepage":"components/Homepage.js","./components/WeatherDetails":"components/WeatherDetails.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","./components/Header":"components/Header.js","./components/WeatherDetails":"components/WeatherDetails.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -34277,7 +34317,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50804" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59124" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

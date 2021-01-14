@@ -19,33 +19,33 @@ function SearchForm() {
     }
 
     return (
-        <>
+        <div className="content">
             {
                 !isOpen ? 
-                    <div>
-                        <button onClick={opePopup}>Search for places</button>
+                    <div className="search">
+                        <button className="search_button" onClick={opePopup}>Search for places</button>
                         <span>gps_fixed</span>
                     </div>
                 : ""
             }
             {isOpen &&
-            <div>
-                <button onClick={closePopup}>X</button>
-                <form onSubmit={searchLocation}>
-                    <input 
-                        type="text" 
-                        placeholder="Search for places" 
-                        value={query} 
-                        onChange={(e) => 
-                            dispatch({type: "ON_CHANGE", query: e.target.value})
-                        } 
-                    />
-                    <button>Search</button>
-                </form>
-                <SearchResults />
-            </div>
+                <div className="popup">
+                    <button onClick={closePopup}>X</button>
+                    <form onSubmit={searchLocation}>
+                        <input 
+                            type="text" 
+                            placeholder="Search for places" 
+                            value={query} 
+                            onChange={(e) => 
+                                dispatch({type: "ON_CHANGE", query: e.target.value})
+                            } 
+                        />
+                        <button>Search</button>
+                    </form>
+                    <SearchResults />
+                </div>
             }
-        </>
+        </div>
     )
 }
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Homepage from './components/Homepage';
+import Header from './components/Header';
 import WeatherDetails from './components/WeatherDetails';
 function App() {
     return ( 
         <div className="wrapper">
-            <Homepage />
+            <Header />
             <Switch>
                 <Route path="/:woeid">
                     <WeatherDetails />

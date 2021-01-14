@@ -24,7 +24,7 @@ function WeatherDetails() {
     }, [woeid])
 
     return (
-        <div>
+        <div className="content">
             {loading && <p>Loading...</p>}
             <ul className="content_detail">{details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
 

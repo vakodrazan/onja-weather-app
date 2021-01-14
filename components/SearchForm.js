@@ -15,7 +15,7 @@ function SearchForm() {
 
     function searchLocation(e) {
         e.preventDefault();
-        dispatch({type: "GET_DATA", location: fetchData()})
+        fetchData();
     }
 
     return (

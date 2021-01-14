@@ -25,25 +25,27 @@ function WeatherDetails() {
 
     return (
         <div className="content">
+
             {loading && <p>Loading...</p>}
-            <ul className="content_detail">{details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
 
-                const date = new Date(consolidate?.applicable_date).toDateString();
+            <ul className="content_detail">
+                {details.consolidated_weather 
+                    && details.consolidated_weather?.slice(1).map(consolidate => {
+                        const date = new Date(consolidate?.applicable_date).toDateString();
 
-                // Convert celius to to fahrenheit
-                // const maxtTempF = ((consolidate.max_temp / 5) * 9) + 32;
-
-                return (
-                    <li key={consolidate.id} className="content_detail_item">
-                        <time dateTime={consolidate?.applicable_date}>{date}</time>
-                        <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
-                        <div className="content_detail_item_temp">
-                            <span>{Math.round(consolidate.max_temp)} °C</span>
-                            <span>{Math.round(consolidate.min_temp)} °C</span>
-                        </div>
-                    </li>
-                )
-            })}</ul>
+                        return (
+                            <li key={consolidate.id} className="content_detail_item">
+                                <time dateTime={consolidate?.applicable_date}>{date}</time>
+                                <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
+                                <div className="content_detail_item_temp">
+                                    <span>{Math.round(consolidate.max_temp)} °C</span>
+                                    <span>{Math.round(consolidate.min_temp)} °C</span>
+                                </div>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
 
             <WeatherDetailsHighlight />
         </div>

@@ -34039,10 +34039,7 @@ function SearchForm() {
 
   function searchLocation(e) {
     e.preventDefault();
-    dispatch({
-      type: "GET_DATA",
-      location: fetchData()
-    });
+    fetchData();
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -34226,10 +34223,8 @@ function WeatherDetails() {
     className: "content"
   }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
-  }, details.consolidated_weather?.shift() && details.consolidated_weather?.map(consolidate => {
-    const date = new Date(consolidate?.applicable_date).toDateString(); // Convert celius to to fahrenheit
-    // const maxtTempF = ((consolidate.max_temp / 5) * 9) + 32;
-
+  }, details.consolidated_weather && details.consolidated_weather?.slice(1).map(consolidate => {
+    const date = new Date(consolidate?.applicable_date).toDateString();
     return /*#__PURE__*/_react.default.createElement("li", {
       key: consolidate.id,
       className: "content_detail_item"

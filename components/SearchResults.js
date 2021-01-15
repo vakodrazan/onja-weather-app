@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react'
 import { Context } from '../Context';
 
 function SearchResults() {
@@ -10,7 +9,6 @@ function SearchResults() {
     }
 
     function handlePlaceFinder(e) {
-        console.log(e.target.id);
         dispatch({type: "UPDATE_WOEID", woeid: e.target.id});
         getWeatherDetail();
         closePopup();

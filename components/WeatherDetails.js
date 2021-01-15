@@ -8,7 +8,7 @@ import TemperatureConverter from './TemperatureConverter';
 
 function WeatherDetails() {
     const {state} = useContext(Context);
-    const {loading, details, degreeType, woeid} = state;
+    const {loading, details, degreeType} = state;
 
     return (
         <div className="content">
@@ -20,7 +20,6 @@ function WeatherDetails() {
             <ul className="content_detail">
                 {details.consolidated_weather 
                     && details.consolidated_weather?.slice(1).map((consolidate, index) => {
-                        // const date = new Date(consolidate?.applicable_date).toDateString();
                         const date = new Date(consolidate?.applicable_date);
                         const day = days[date.getDay()];
                         const month = months[date.getMonth()];

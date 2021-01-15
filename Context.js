@@ -79,7 +79,6 @@ function ContextProvider({children}) {
 
 
     async function getWeatherDetail() {
-        console.log(state.woeid);
         const res = await fetch(CORS_URL + WEATHER_URL + state.woeid);
         const data = await res.json()
         dispatch({type: "SHOW_DETAILS", details: data})

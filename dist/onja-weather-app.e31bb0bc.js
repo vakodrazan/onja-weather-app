@@ -33959,7 +33959,6 @@ function ContextProvider({
   }, []);
 
   async function getWeatherDetail() {
-    console.log(state.woeid);
     const res = await fetch(CORS_URL + WEATHER_URL + state.woeid);
     const data = await res.json();
     dispatch({
@@ -33990,8 +33989,6 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _Context = require("../Context");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34018,7 +34015,6 @@ function SearchResults() {
   }
 
   function handlePlaceFinder(e) {
-    console.log(e.target.id);
     dispatch({
       type: "UPDATE_WOEID",
       woeid: e.target.id
@@ -34037,7 +34033,7 @@ function SearchResults() {
 
 var _default = SearchResults;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/SearchForm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/SearchForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34329,15 +34325,13 @@ function WeatherDetails() {
   const {
     loading,
     details,
-    degreeType,
-    woeid
+    degreeType
   } = state;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map((consolidate, index) => {
-    // const date = new Date(consolidate?.applicable_date).toDateString();
     const date = new Date(consolidate?.applicable_date);
 
     const day = _DateArray.days[date.getDay()];

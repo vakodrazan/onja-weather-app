@@ -214,13 +214,26 @@ ul {
   height: 672px;
   position: fixed;
   background-color: #1E213A;
+  width: fit-content;
+  display: grid;
+}
+.popup .closePopup {
+  align-items: flex-end;
+  justify-self: flex-end;
 }
 
 .today_detail {
   font-size: 18px;
-  text-align: center;
   display: grid;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
   gap: 87px;
+}
+@media (min-width: 1140px) {
+  .today_detail {
+    width: 459px;
+  }
 }
 .today_detail img {
   width: 150px;

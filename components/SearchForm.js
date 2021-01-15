@@ -22,33 +22,39 @@ function SearchForm() {
     }
 
     return (
-        <div className="content">
+        <div>
             {
                 !isOpen ? 
-                    <div className="search_popup">
-                        <button className="search_popup_button" onClick={opePopup}>Search for places</button>
-                        <div className="gps_fixed">
-                            <img src={GpsFixed} alt="Gps fixed" />
+                    <div className="content">
+                        <div className="search_popup">
+                            <button className="search_popup_button" onClick={opePopup}>Search for places</button>
+                            <div className="gps_fixed">
+                                <img src={GpsFixed} alt="Gps fixed" />
+                            </div>
                         </div>
                     </div>
                 : ""
             }
             {isOpen &&
                 <div className="popup">
-                    <button onClick={closePopup}>X</button>
-                    <form onSubmit={searchLocation} className="search">
-                        <input 
-                            className="search_location"
-                            type="text" 
-                            placeholder="Search Location" 
-                            value={query} 
-                            onChange={(e) => 
-                                dispatch({type: "ON_CHANGE", query: e.target.value})
-                            } 
-                        />
-                        <button className="search_button">Search</button>
-                    </form>
-                    <SearchResults />
+                    <div className="content">
+                        <div className="closePopup">
+                            <button onClick={closePopup}>X</button>
+                        </div>
+                        <form onSubmit={searchLocation} className="search">
+                            <input 
+                                className="search_location"
+                                type="text" 
+                                placeholder="Search Location" 
+                                value={query} 
+                                onChange={(e) => 
+                                    dispatch({type: "ON_CHANGE", query: e.target.value})
+                                } 
+                            />
+                            <button className="search_button">Search</button>
+                        </form>
+                        <SearchResults />
+                    </div>
                 </div>
             }
         </div>

@@ -222,13 +222,26 @@ ul {
     height: 672px;
     position: fixed;
     background-color: #1E213A;
+    width: fit-content;
+    display: grid;
+
+    .closePopup {
+        align-items: flex-end;
+        justify-self: flex-end;
+    }
 }
 
 .today_detail {
     font-size: 18px;
-    text-align: center;
     display: grid;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     gap: 87px;
+
+    @media (min-width: $desktop_breakpoint) {
+        width: 459px;
+    }
 
     img {
         width: 150px;

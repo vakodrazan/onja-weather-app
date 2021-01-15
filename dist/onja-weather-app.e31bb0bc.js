@@ -34091,9 +34091,9 @@ function SearchForm() {
     fetchData();
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement("div", null, !isOpen ? /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, !isOpen ? /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "search_popup"
   }, /*#__PURE__*/_react.default.createElement("button", {
     className: "search_popup_button",
@@ -34103,11 +34103,15 @@ function SearchForm() {
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _gps_fixed24px.default,
     alt: "Gps fixed"
-  }))) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", {
+  })))) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", {
     className: "popup"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "closePopup"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: closePopup
-  }, "X"), /*#__PURE__*/_react.default.createElement("form", {
+  }, "X")), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation,
     className: "search"
   }, /*#__PURE__*/_react.default.createElement("input", {
@@ -34121,7 +34125,7 @@ function SearchForm() {
     })
   }), /*#__PURE__*/_react.default.createElement("button", {
     className: "search_button"
-  }, "Search")), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null)));
+  }, "Search")), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null))));
 }
 
 var _default = SearchForm;
@@ -34365,7 +34369,8 @@ function WeatherDetails() {
     degreeType
   } = state;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "content",
+    className: "content"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "detais"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
@@ -34392,7 +34397,7 @@ function WeatherDetails() {
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"
     }, /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"), /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F")));
-  })), /*#__PURE__*/_react.default.createElement(_WeatherDetailsHighlight.default, null));
+  })), /*#__PURE__*/_react.default.createElement(_WeatherDetailsHighlight.default, null)));
 }
 
 var _default = WeatherDetails;

@@ -6,4 +6,4 @@ React weather app challenge
 **API**:  https://www.metaweather.com/api/
 
 
-Live example : https://wheatermaster.netlify.app
+Live example : https://cosme-gressier-weather-app.netlify.app/

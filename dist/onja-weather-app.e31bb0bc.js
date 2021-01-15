@@ -34080,6 +34080,10 @@ function SearchForm() {
 
   function searchLocation(e) {
     e.preventDefault();
+    dispatch({
+      type: "ON_CHANGE",
+      query: ""
+    });
     fetchData();
   }
 
@@ -34097,8 +34101,9 @@ function SearchForm() {
   }, "X"), /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: searchLocation
   }, /*#__PURE__*/_react.default.createElement("input", {
+    className: "search",
     type: "text",
-    placeholder: "Search for places",
+    placeholder: "Search Location",
     value: query,
     onChange: e => dispatch({
       type: "ON_CHANGE",

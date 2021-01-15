@@ -1,3 +1,5 @@
+@import "./fonts.scss";
+
 $desktop_breakpoint: 1140px;
 
 @mixin grid-layout {
@@ -13,6 +15,11 @@ body {
     margin: 0;
     background-color: #100E1D;
     color: #E7E7EB;
+    font-family: "Raleway", Arial, Helvetica, sans-serif;
+}
+
+p {
+    margin: 0;
 }
 
 a {

@@ -1,0 +1,45 @@
+// Go to the path where the file name stay,
+// use the `filename` key
+
+$path_to_font:"../fonts/";
+
+// Store all the value inside of object
+// Use the same key name in each object
+$font-faces: 
+  (
+    name: "Raleway Bold",
+    system-name: "Raleway-Bold",
+    weight: 700,
+    style: normal,
+    filename: "raleway-700"
+  ),
+  (
+    name: "Raleway SemiBold",
+    system-name: "Raleway-SemiBold",
+    weight: 600,
+    style: normal,
+    filename: "raleway-600"
+  ),
+  (
+    name: "Raleway Medium",
+    system-name: "Raleway-Medium",
+    weight: 400,
+    style: normal,
+    filename: "raleway-500"
+  )
+;
+
+// loop through the object using `@each in`,
+// also use the keywords `map-get` to get the value from the object array
+@each $face in $font-faces {
+  @font-face {
+    font-family: map-get($face, name);
+    font-weight: map-get($face, weight);
+    font-style: map-get($face, style);
+      src: 
+        local(map-get($face, name)),
+        local(map-get($face, system-name)),
+        url('#{$path_to_font}#{map-get($face, filename)}.woff2') format(woff2),
+        url('#{$path_to_font}#{map-get($face, filename)}.woff') format(woff),
+  }
+}

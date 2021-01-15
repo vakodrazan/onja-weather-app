@@ -184,12 +184,12 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.scss":[function(require,module,exports) {
+},{"./bundle-url":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"styles/index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\fonts\\raleway-700.woff2":[["raleway-700.6c3845d2.woff2","fonts/raleway-700.woff2"],"fonts/raleway-700.woff2"],"./..\\fonts\\raleway-700.woff":[["raleway-700.bfe553e2.woff","fonts/raleway-700.woff"],"fonts/raleway-700.woff"],"./..\\fonts\\raleway-600.woff2":[["raleway-600.845e13ec.woff2","fonts/raleway-600.woff2"],"fonts/raleway-600.woff2"],"./..\\fonts\\raleway-600.woff":[["raleway-600.793738fc.woff","fonts/raleway-600.woff"],"fonts/raleway-600.woff"],"./..\\fonts\\raleway-500.woff2":[["raleway-500.b92737a9.woff2","fonts/raleway-500.woff2"],"fonts/raleway-500.woff2"],"./..\\fonts\\raleway-500.woff":[["raleway-500.958c9fac.woff","fonts/raleway-500.woff"],"fonts/raleway-500.woff"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -394,4 +394,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/onja-weather-app.80ee2152.js.map
+//# sourceMappingURL=/styles.434540e1.js.map

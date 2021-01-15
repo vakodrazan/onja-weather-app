@@ -1,7 +1,26 @@
+@font-face {
+  font-family: "Raleway Bold";
+  font-weight: 700;
+  font-style: normal;
+  src: local("Raleway Bold"), local("Raleway-Bold"), url("/raleway-700.6c3845d2.woff2") format(woff2), url("/raleway-700.bfe553e2.woff") format(woff);
+}
+@font-face {
+  font-family: "Raleway SemiBold";
+  font-weight: 600;
+  font-style: normal;
+  src: local("Raleway SemiBold"), local("Raleway-SemiBold"), url("/raleway-600.845e13ec.woff2") format(woff2), url("/raleway-600.793738fc.woff") format(woff);
+}
+@font-face {
+  font-family: "Raleway Medium";
+  font-weight: 400;
+  font-style: normal;
+  src: local("Raleway Medium"), local("Raleway-Medium"), url("/raleway-500.b92737a9.woff2") format(woff2), url("/raleway-500.958c9fac.woff") format(woff);
+}
 body {
   margin: 0;
   background-color: #100E1D;
   color: #E7E7EB;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
 }
 
 p {
@@ -132,4 +151,4 @@ ul {
   background-color: #1E213A;
 }
 
-/*# sourceMappingURL=/onja-weather-app.80ee2152.css.map */
+/*# sourceMappingURL=/styles.434540e1.css.map */

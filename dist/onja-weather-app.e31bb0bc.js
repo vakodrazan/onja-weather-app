@@ -34033,7 +34033,9 @@ function SearchResults() {
 
 var _default = SearchResults;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/SearchForm.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"assets/gps_fixed-24px.svg":[function(require,module,exports) {
+module.exports = "/gps_fixed-24px.64b9f8e7.svg";
+},{}],"components/SearchForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34046,6 +34048,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _Context = require("../Context");
 
 var _SearchResults = _interopRequireDefault(require("./SearchResults"));
+
+var _gps_fixed24px = _interopRequireDefault(require("../assets/gps_fixed-24px.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34090,18 +34094,24 @@ function SearchForm() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, !isOpen ? /*#__PURE__*/_react.default.createElement("div", {
-    className: "search"
+    className: "search_popup"
   }, /*#__PURE__*/_react.default.createElement("button", {
-    className: "search_button",
+    className: "search_popup_button",
     onClick: opePopup
-  }, "Search for places"), /*#__PURE__*/_react.default.createElement("span", null, "gps_fixed")) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", {
+  }, "Search for places"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "gps_fixed"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _gps_fixed24px.default,
+    alt: "Gps fixed"
+  }))) : "", isOpen && /*#__PURE__*/_react.default.createElement("div", {
     className: "popup"
   }, /*#__PURE__*/_react.default.createElement("button", {
     onClick: closePopup
   }, "X"), /*#__PURE__*/_react.default.createElement("form", {
-    onSubmit: searchLocation
+    onSubmit: searchLocation,
+    className: "search"
   }, /*#__PURE__*/_react.default.createElement("input", {
-    className: "search",
+    className: "search_location",
     type: "text",
     placeholder: "Search Location",
     value: query,
@@ -34109,12 +34119,14 @@ function SearchForm() {
       type: "ON_CHANGE",
       query: e.target.value
     })
-  }), /*#__PURE__*/_react.default.createElement("button", null, "Search")), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null)));
+  }), /*#__PURE__*/_react.default.createElement("button", {
+    className: "search_button"
+  }, "Search")), /*#__PURE__*/_react.default.createElement(_SearchResults.default, null)));
 }
 
 var _default = SearchForm;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js"}],"components/DateArray.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./SearchResults":"components/SearchResults.js","../assets/gps_fixed-24px.svg":"assets/gps_fixed-24px.svg"}],"components/DateArray.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -1,6 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { Context } from '../Context';
 import SearchResults from './SearchResults';
+import GpsFixed from "../assets/gps_fixed-24px.svg";
+
 
 function SearchForm() {
     const {state, dispatch, fetchData} = useContext(Context);
@@ -23,18 +25,20 @@ function SearchForm() {
         <div className="content">
             {
                 !isOpen ? 
-                    <div className="search">
-                        <button className="search_button" onClick={opePopup}>Search for places</button>
-                        <span>gps_fixed</span>
+                    <div className="search_popup">
+                        <button className="search_popup_button" onClick={opePopup}>Search for places</button>
+                        <div className="gps_fixed">
+                            <img src={GpsFixed} alt="Gps fixed" />
+                        </div>
                     </div>
                 : ""
             }
             {isOpen &&
                 <div className="popup">
                     <button onClick={closePopup}>X</button>
-                    <form onSubmit={searchLocation}>
+                    <form onSubmit={searchLocation} className="search">
                         <input 
-                            className="search"
+                            className="search_location"
                             type="text" 
                             placeholder="Search Location" 
                             value={query} 
@@ -42,7 +46,7 @@ function SearchForm() {
                                 dispatch({type: "ON_CHANGE", query: e.target.value})
                             } 
                         />
-                        <button>Search</button>
+                        <button className="search_button">Search</button>
                     </form>
                     <SearchResults />
                 </div>

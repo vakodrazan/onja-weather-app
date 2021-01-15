@@ -134,15 +134,61 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  gap: 12px;
+}
+.search_location {
+  color: #616475;
+  background-image: url("/search-24px.8f5bcfa6.svg");
+  background-repeat: no-repeat;
+  background-position: 3%;
+  border: 1px solid #E7E7EB;
+  box-sizing: border-box;
+  width: 80%;
+  height: 48px;
+  padding-left: 40px;
 }
 .search_button {
+  height: 48px;
   font-size: 16px;
   font-weight: 500;
+  background-color: #3C47E9;
+  padding-left: 19px;
+  padding-right: 14px;
+  padding-top: 14px;
+  padding-bottom: 15px;
+  border: none;
+  color: #E7E7EB;
+  height: 48px;
+}
+
+.search_popup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.search_popup_button {
   background: #6E707A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: #E7E7EB;
   width: 161px;
   height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #E7E7EB;
+  border: none;
+}
+.search_popup .gps_fixed {
+  background-color: rgba(110, 112, 122, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.search_popup img {
+  width: 22px;
+  height: 22px;
+  text-align: center;
 }
 
 .popup {

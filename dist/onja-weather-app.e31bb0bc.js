@@ -34187,10 +34187,14 @@ function TodayWeatherDetail() {
   }, celsius), " \xB0C") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
   }, " ", fahrenheit), " \xB0F")), /*#__PURE__*/_react.default.createElement("p", {
-    className: ""
-  }, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
+    className: "weather-name"
+  }, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("div", {
+    className: "applicable"
+  }, /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", null, details.title))) : "");
+  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", {
+    className: "city-name"
+  }, details.title))) : "");
 }
 
 var _default = TodayWeatherDetail;

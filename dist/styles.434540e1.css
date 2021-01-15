@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+address {
+  font-style: normal;
+}
+
 .content {
   padding: 24px;
 }
@@ -228,6 +232,21 @@ ul {
 }
 .today_detail .temperature_value {
   font-size: 144px;
+}
+.today_detail .weather-name {
+  font-weight: 600;
+  font-size: 36px;
+  color: #A09FB1;
+}
+.today_detail .applicable {
+  display: grid;
+  gap: 32px;
+  color: #88869D;
+}
+.today_detail .city-name {
+  background-image: url("/location_on-24px.ddb86b60.svg");
+  background-repeat: no-repeat;
+  background-position: 25%;
 }
 
 .converter {

@@ -32,10 +32,9 @@ a {
     text-decoration: none;
 }
 
-// svg {
-//     width: 24px;
-//     height: 24px;
-// }
+address {
+    font-style: normal;
+}
 
 .content {
     padding: 24px;
@@ -244,6 +243,24 @@ ul {
             font-size: 144px;
 
         }
+    }
+
+    .weather-name {
+        font-weight: 600;
+        font-size: 36px;
+        color: #A09FB1;
+    }
+
+    .applicable {
+        display: grid;
+        gap: 32px;
+        color: #88869D;
+    }
+
+    .city-name {
+        background-image: url("../assets/location_on-24px.svg");
+        background-repeat: no-repeat;
+        background-position: 25%;
     }
 }
 

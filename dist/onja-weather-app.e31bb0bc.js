@@ -34184,9 +34184,9 @@ function TodayWeatherDetail() {
     className: "temperature"
   }, degreeType === "celsius" ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
-  }, celsius), " \xB0c") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+  }, celsius), " \xB0C") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
-  }, " ", fahrenheit), " \xB0f")), /*#__PURE__*/_react.default.createElement("p", {
+  }, " ", fahrenheit), " \xB0F")), /*#__PURE__*/_react.default.createElement("p", {
     className: ""
   }, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
@@ -34298,7 +34298,11 @@ function TemperatureConverter() {
     });
   }
 
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "converter"
+  }, /*#__PURE__*/_react.default.createElement("div", {
+    className: "converter_item"
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "radio",
     id: "celsius",
     value: "celsius",
@@ -34306,7 +34310,9 @@ function TemperatureConverter() {
     onChange: updateDegreeForcast
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "celsius"
-  }, "\xB0C")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, "\xB0C")), /*#__PURE__*/_react.default.createElement("div", {
+    className: "converter_item"
+  }, /*#__PURE__*/_react.default.createElement("input", {
     type: "radio",
     id: "farenheit",
     value: "fahrenheit",

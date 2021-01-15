@@ -10,8 +10,8 @@ function TemperatureConverter() {
     }
 
     return (
-        <div>
-            <div >
+        <div className="converter">
+            <div className="converter_item">
                 <input
                     type="radio"
                     id="celsius"
@@ -21,7 +21,7 @@ function TemperatureConverter() {
                 />
                 <label htmlFor="celsius">°C</label>
             </div>
-            <div >
+            <div className="converter_item">
                 <input
                     type="radio"
                     id="farenheit"

@@ -230,4 +230,29 @@ ul {
   font-size: 144px;
 }
 
+.converter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 42px;
+  padding-bottom: 66px;
+}
+.converter input[type=radio] {
+  display: none;
+}
+.converter_item {
+  background: #E7E7EB;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #110E3C;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: bold;
+  font-size: 18px;
+}
+
 /*# sourceMappingURL=/styles.434540e1.css.map */

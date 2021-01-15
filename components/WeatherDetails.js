@@ -11,7 +11,7 @@ function WeatherDetails() {
     const {loading, details, degreeType} = state;
 
     return (
-        <div className="content">
+        <div className="content" className="detais">
 
             <TemperatureConverter />
 

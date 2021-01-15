@@ -46,16 +46,12 @@ a {
     }
 }
 
-// .place_finder {
-//     display: block;
-//     position: fixed;
-// }
 
 progress {
     border-radius: 80px; 
     height: 8px;
     max-width: 100%;
-
+    
     &::-webkit-progress-bar {
         background-color: #E7E7EB;
         border-radius: 80px;
@@ -82,9 +78,25 @@ ul {
 
     @media (min-width: $desktop_breakpoint) {
         @include grid-layout();
+        gap: 154px;
+
     }
 }
 
+.detais {
+    // left: 25%;
+    width: 75%;
+    // position: absolute;
+}
+
+.place_finder {
+    background-color: #1E213A;
+    @media (min-width: $desktop_breakpoint) {
+        display: block;
+        min-height: 100vh;
+        // position: fixed;
+    }
+}
 .content_detail {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -211,4 +223,26 @@ ul {
     height: 672px;
     position: fixed;
     background-color: #1E213A;
+}
+
+.today_detail {
+    font-size: 18px;
+    text-align: center;
+    display: grid;
+    gap: 87px;
+
+    img {
+        width: 150px;
+        height: 174px;
+    }
+
+    .temperature {
+        font-weight: 500;
+        font-size: 48px;
+
+        &_value {
+            font-size: 144px;
+
+        }
+    }
 }

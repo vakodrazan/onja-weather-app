@@ -34176,11 +34176,21 @@ function TodayWeatherDetail() {
   ;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("img", {
+  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", {
+    className: "today_detail"
+  }, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
-  }), /*#__PURE__*/_react.default.createElement("p", null, degreeType === "celsius" ? celsius + "°C" : fahrenheit + "°F"), /*#__PURE__*/_react.default.createElement("p", null, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("time", {
+  }), /*#__PURE__*/_react.default.createElement("p", {
+    className: "temperature"
+  }, degreeType === "celsius" ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+    className: "temperature_value"
+  }, celsius), " \xB0c") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+    className: "temperature_value"
+  }, " ", fahrenheit), " \xB0f")), /*#__PURE__*/_react.default.createElement("p", {
+    className: ""
+  }, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", null, details.title)) : "");
+  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", null, details.title))) : "");
 }
 
 var _default = TodayWeatherDetail;
@@ -34345,7 +34355,8 @@ function WeatherDetails() {
     degreeType
   } = state;
   return /*#__PURE__*/_react.default.createElement("div", {
-    className: "content"
+    className: "content",
+    className: "detais"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map((consolidate, index) => {

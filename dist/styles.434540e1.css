@@ -72,6 +72,21 @@ ul {
   .wrapper {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    gap: 154px;
+  }
+}
+
+.detais {
+  width: 75%;
+}
+
+.place_finder {
+  background-color: #1E213A;
+}
+@media (min-width: 1140px) {
+  .place_finder {
+    display: block;
+    min-height: 100vh;
   }
 }
 
@@ -195,6 +210,24 @@ ul {
   height: 672px;
   position: fixed;
   background-color: #1E213A;
+}
+
+.today_detail {
+  font-size: 18px;
+  text-align: center;
+  display: grid;
+  gap: 87px;
+}
+.today_detail img {
+  width: 150px;
+  height: 174px;
+}
+.today_detail .temperature {
+  font-weight: 500;
+  font-size: 48px;
+}
+.today_detail .temperature_value {
+  font-size: 144px;
 }
 
 /*# sourceMappingURL=/styles.434540e1.css.map */

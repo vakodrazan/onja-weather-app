@@ -7,22 +7,8 @@ import {months, days} from "./DateArray";
 import TemperatureConverter from './TemperatureConverter';
 
 function WeatherDetails() {
-    const {state, dispatch} = useContext(Context);
-    const {loading, details, degreeType} = state;
-
-    const {woeid} = useParams();
- 
-    const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/"
-
-    async function getWeatherDetail() {
-        const res = await fetch(WEATHER_URL + woeid);
-        const data = await res.json()
-        dispatch({type: "SHOW_DETAILS", details: data})
-    }
-
-    useEffect(() => {
-        getWeatherDetail();
-    }, [woeid])
+    const {state} = useContext(Context);
+    const {loading, details, degreeType, woeid} = state;
 
     return (
         <div className="content">
@@ -40,8 +26,6 @@ function WeatherDetails() {
                         const month = months[date.getMonth()];
                         const numericDate = date.getDate();
 
-                        console.log(index);
-
                         const finalDateResult = `${day}, ${numericDate} ${month}`
 
                         const celsiusMaxTemp = Math.round(consolidate.max_temp);
@@ -52,7 +36,7 @@ function WeatherDetails() {
 
                         return (
                             <li key={consolidate.id} className="content_detail_item">
-                                <time dateTime={consolidate?.applicable_date}>{ finalDateResult}</time>
+                                <time dateTime={consolidate?.applicable_date}>{index === 0 ? "Tomorrow" : finalDateResult}</time>
                                 <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                                 <div className="content_detail_item_temp">
                                     <span>{degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"}</span>

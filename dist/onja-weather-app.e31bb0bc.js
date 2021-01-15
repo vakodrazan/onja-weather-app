@@ -33870,7 +33870,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 const Context = (0, _react.createContext)();
 exports.Context = Context;
-const URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=";
+const CORS_URL = "https://cors-anywhere.herokuapp.com/";
+const URL = "https://www.metaweather.com/api/location/search/?query=";
+const WEATHER_URL = "https://www.metaweather.com/api/location/";
 
 function ContextProvider({
   children
@@ -33921,6 +33923,13 @@ function ContextProvider({
           };
         }
 
+      case "UPDATE_WOEID":
+        {
+          return { ...state,
+            woeid: action.woeid
+          };
+        }
+
       default:
         {
           return state;
@@ -33931,12 +33940,13 @@ function ContextProvider({
     details: [],
     loading: true,
     query: "helsinki",
+    woeid: "565346",
     isOpen: false,
     degreeType: "celsius"
   });
 
   async function fetchData() {
-    const res = await fetch(URL + state.query);
+    const res = await fetch(CORS_URL + URL + state.query);
     const data = await res.json();
     dispatch({
       type: "GET_DATA",
@@ -33947,11 +33957,26 @@ function ContextProvider({
   (0, _react.useEffect)(() => {
     fetchData();
   }, []);
+
+  async function getWeatherDetail() {
+    console.log(state.woeid);
+    const res = await fetch(CORS_URL + WEATHER_URL + state.woeid);
+    const data = await res.json();
+    dispatch({
+      type: "SHOW_DETAILS",
+      details: data
+    });
+  }
+
+  (0, _react.useEffect)(() => {
+    getWeatherDetail();
+  }, [state.woeid]);
   return /*#__PURE__*/_react.default.createElement(Context.Provider, {
     value: {
       state,
       dispatch,
-      fetchData
+      fetchData,
+      getWeatherDetail
     }
   }, children);
 }
@@ -33976,7 +34001,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function SearchResults() {
   const {
     state,
-    dispatch
+    dispatch,
+    getWeatherDetail
   } = (0, _react.useContext)(_Context.Context);
   const {
     loading,
@@ -33991,11 +34017,21 @@ function SearchResults() {
     });
   }
 
+  function handlePlaceFinder(e) {
+    console.log(e.target.id);
+    dispatch({
+      type: "UPDATE_WOEID",
+      woeid: e.target.id
+    });
+    getWeatherDetail();
+    closePopup();
+  }
+
   return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isOpen && /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", null, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
     key: loc.woeid
-  }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
-    to: `/${loc.woeid}`,
-    onClick: closePopup
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    id: loc.woeid,
+    onClick: handlePlaceFinder
   }, loc.title))))));
 }
 
@@ -34288,31 +34324,14 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function WeatherDetails() {
   const {
-    state,
-    dispatch
+    state
   } = (0, _react.useContext)(_Context.Context);
   const {
     loading,
     details,
-    degreeType
-  } = state;
-  const {
+    degreeType,
     woeid
-  } = (0, _reactRouterDom.useParams)();
-  const WEATHER_URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
-
-  async function getWeatherDetail() {
-    const res = await fetch(WEATHER_URL + woeid);
-    const data = await res.json();
-    dispatch({
-      type: "SHOW_DETAILS",
-      details: data
-    });
-  }
-
-  (0, _react.useEffect)(() => {
-    getWeatherDetail();
-  }, [woeid]);
+  } = state;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
@@ -34326,7 +34345,6 @@ function WeatherDetails() {
     const month = _DateArray.months[date.getMonth()];
 
     const numericDate = date.getDate();
-    console.log(index);
     const finalDateResult = `${day}, ${numericDate} ${month}`;
     const celsiusMaxTemp = Math.round(consolidate.max_temp);
     const fahrenheitMaxTemp = Math.round(celsiusMaxTemp * 9 / 5 + 32);
@@ -34337,7 +34355,7 @@ function WeatherDetails() {
       className: "content_detail_item"
     }, /*#__PURE__*/_react.default.createElement("time", {
       dateTime: consolidate?.applicable_date
-    }, finalDateResult), /*#__PURE__*/_react.default.createElement("img", {
+    }, index === 0 ? "Tomorrow" : finalDateResult), /*#__PURE__*/_react.default.createElement("img", {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"
@@ -34368,9 +34386,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function App() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "wrapper"
-  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_reactRouterDom.Switch, null, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Route, {
-    path: "/:woeid"
-  }, /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null))));
+  }, /*#__PURE__*/_react.default.createElement(_Header.default, null), /*#__PURE__*/_react.default.createElement(_WeatherDetails.default, null));
 }
 
 var _default = App;
@@ -34419,7 +34435,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59124" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54995" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

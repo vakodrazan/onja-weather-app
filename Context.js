@@ -2,7 +2,9 @@ import React, { createContext, useEffect, useReducer, useState } from 'react'
 
 const Context = createContext();
 
-const URL = "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query="
+const CORS_URL = "https://cors-anywhere.herokuapp.com/"
+const URL = "https://www.metaweather.com/api/location/search/?query="
+const WEATHER_URL = "https://www.metaweather.com/api/location/"
 
 function ContextProvider({children}) {
     const [state, dispatch] = useReducer((state, action) => {
@@ -45,6 +47,12 @@ function ContextProvider({children}) {
                     degreeType: action.degreeType
                 }
             }
+            case "UPDATE_WOEID": {
+                return {
+                    ...state,
+                    woeid: action.woeid
+                }
+            }
             default: {
                 return state
             }
@@ -54,12 +62,13 @@ function ContextProvider({children}) {
         details: [],
         loading: true,
         query: "helsinki",
+        woeid: "565346",
         isOpen: false,
         degreeType: "celsius"
     })
 
     async function fetchData() {
-        const res = await fetch(URL + state.query);
+        const res = await fetch(CORS_URL + URL + state.query);
         const data = await res.json();
         dispatch({type: "GET_DATA", location: data})
     }
@@ -68,8 +77,20 @@ function ContextProvider({children}) {
         fetchData();
     }, []);
 
+
+    async function getWeatherDetail() {
+        console.log(state.woeid);
+        const res = await fetch(CORS_URL + WEATHER_URL + state.woeid);
+        const data = await res.json()
+        dispatch({type: "SHOW_DETAILS", details: data})
+    }
+
+    useEffect(() => {
+        getWeatherDetail();
+    }, [state.woeid])
+
     return (
-        <Context.Provider value={{state, dispatch, fetchData}}>
+        <Context.Provider value={{state, dispatch, fetchData, getWeatherDetail}}>
             {children}
         </Context.Provider>
     )

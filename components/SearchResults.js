@@ -3,11 +3,19 @@ import { Link } from 'react-router-dom';
 import { Context } from '../Context';
 
 function SearchResults() {
-    const {state, dispatch} = useContext(Context);
+    const {state, dispatch, getWeatherDetail} = useContext(Context);
     const {loading, location, isOpen} = state;
     function closePopup() {
         dispatch({type: "CLOSE_POPUP", isOpen: false});
     }
+
+    function handlePlaceFinder(e) {
+        console.log(e.target.id);
+        dispatch({type: "UPDATE_WOEID", woeid: e.target.id});
+        getWeatherDetail();
+        closePopup();
+    }
+
     return (
         <>
             {isOpen &&
@@ -16,9 +24,9 @@ function SearchResults() {
                     <div>
                         {location.length > 0 && location.map(loc => (
                             <div key={loc.woeid}>
-                                <Link to={`/${loc.woeid}`} onClick={closePopup}>
+                                <p id={loc.woeid} onClick={handlePlaceFinder}>
                                     {loc.title}
-                                </Link>
+                                </p>
                             </div>
                         ))}
                     </div>

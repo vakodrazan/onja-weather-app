@@ -6,11 +6,7 @@ function App() {
     return ( 
         <div className="wrapper">
             <Header />
-            <Switch>
-                <Route path="/:woeid">
-                    <WeatherDetails />
-                </Route>
-            </Switch>
+            <WeatherDetails />
         </div>
     )
 }

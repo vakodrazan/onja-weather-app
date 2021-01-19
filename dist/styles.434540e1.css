@@ -318,9 +318,6 @@ ul {
   position: relative;
   font-size: 16px;
 }
-.search-result_list {
-  display: grid;
-}
 .search-result_list_item {
   cursor: pointer;
   width: 270px;

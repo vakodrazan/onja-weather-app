@@ -36,6 +36,10 @@ address {
     font-style: normal;
 }
 
+button {
+    cursor: pointer;
+}
+
 .content {
     padding: 24px;
 
@@ -91,7 +95,7 @@ ul {
     background-color: #1E213A;
 
     @media (min-width: $desktop_breakpoint) {
-        display: block;
+        width: 25%;
         height: 100vh;
         text-align: center;
         display: flex;

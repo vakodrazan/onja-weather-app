@@ -36,6 +36,10 @@ address {
   font-style: normal;
 }
 
+button {
+  cursor: pointer;
+}
+
 .content {
   padding: 24px;
 }
@@ -90,7 +94,7 @@ ul {
 }
 @media (min-width: 1140px) {
   .place_finder {
-    display: block;
+    width: 25%;
     height: 100vh;
     text-align: center;
     display: flex;

@@ -225,6 +225,11 @@ ul {
   width: max-content;
   top: 0;
   left: 0;
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 .popup::-webkit-scrollbar {
   display: none;

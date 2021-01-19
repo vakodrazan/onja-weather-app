@@ -46,6 +46,11 @@ address {
 }
 
 
+.details {
+    position: absolute;
+    left: 30%;
+}
+
 progress {
     border-radius: 80px; 
     height: 8px;
@@ -82,18 +87,18 @@ ul {
     }
 }
 
-.detais {
-    // left: 25%;
-    width: 75%;
-    // position: absolute;
-}
-
 .place_finder {
     background-color: #1E213A;
+
     @media (min-width: $desktop_breakpoint) {
         display: block;
-        min-height: 100vh;
-        // position: fixed;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        gap: 20px;
     }
 }
 .content_detail {
@@ -219,28 +224,38 @@ ul {
 
 
 .popup {
-    height: 672px;
+    height: 100vh;
     position: fixed;
     background-color: #1E213A;
-    width: fit-content;
-    display: grid;
+    width: max-content;
+    top: 0;
+    left: 0;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        justify-content: left;
+    }
 
     .closePopup {
-        align-items: flex-end;
-        justify-self: flex-end;
+        text-align: right;
+        align-self: flex-end;
     }
 }
 
 .today_detail {
     font-size: 18px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
-    justify-content: center;
-    gap: 87px;
-
+    
     @media (min-width: $desktop_breakpoint) {
-        width: 459px;
+        height: 75vh;
+        margin-bottom: 30px;
     }
 
     img {
@@ -250,11 +265,10 @@ ul {
 
     .temperature {
         font-weight: 500;
-        font-size: 48px;
+        font-size: 26px;
 
         &_value {
-            font-size: 144px;
-
+            font-size: 48px;
         }
     }
 
@@ -271,9 +285,10 @@ ul {
     }
 
     .city-name {
+        align-self: center;
         background-image: url("../assets/location_on-24px.svg");
         background-repeat: no-repeat;
-        background-position: 25%;
+        background-position: 15%;
     }
 }
 
@@ -299,5 +314,27 @@ ul {
         justify-content: space-around;
         font-weight: bold;
         font-size: 18px;
+    }
+}
+
+.search-result {
+    overflow: auto;
+    position: relative;
+
+    &_list {
+        display: grid;
+
+        &_item {
+            cursor: pointer;
+            width: 270px;
+            text-align: left;
+            padding-top: 23px;
+            padding-bottom: 22px;
+            padding-left: 12px;
+
+            &:hover {
+                border: 1px solid #616475;
+            }
+        }
     }
 }

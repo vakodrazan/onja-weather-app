@@ -24,7 +24,7 @@ function TodayWeatherDetail() {
             {details.consolidated_weather 
                 ? <div className="today_detail">
                     <img src={`https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`} />
-                    <p className="temperature">{degreeType === "celsius" ? <div><span className="temperature_value">{celsius}</span> °C</div> : <div><span className="temperature_value"> {fahrenheit}</span> °F</div>}</p>
+                    <div className="temperature">{degreeType === "celsius" ? <div><span className="temperature_value">{celsius}</span> °C</div> : <div><span className="temperature_value"> {fahrenheit}</span> °F</div>}</div>
                     <p className="weather-name">{details.consolidated_weather[0].weather_state_name}</p>
                     <div className="applicable">
                         <time dateTime={details.consolidated_weather[0].applicable_date}>Today . {day}, {numericDate} {month}</time>

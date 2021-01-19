@@ -34023,9 +34023,13 @@ function SearchResults() {
     closePopup();
   }
 
-  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isOpen && /*#__PURE__*/_react.default.createElement("div", null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", null, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("div", {
-    key: loc.woeid
-  }, /*#__PURE__*/_react.default.createElement("p", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, isOpen && /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("div", {
+    className: "search-result"
+  }, location.length > 0 && location.map(loc => /*#__PURE__*/_react.default.createElement("ul", {
+    key: loc.woeid,
+    className: "search-result_list"
+  }, /*#__PURE__*/_react.default.createElement("li", {
+    className: "search-result_list_item",
     id: loc.woeid,
     onClick: handlePlaceFinder
   }, loc.title))))));
@@ -34184,7 +34188,7 @@ function TodayWeatherDetail() {
     className: "today_detail"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
-  }), /*#__PURE__*/_react.default.createElement("p", {
+  }), /*#__PURE__*/_react.default.createElement("div", {
     className: "temperature"
   }, degreeType === "celsius" ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
@@ -34371,7 +34375,7 @@ function WeatherDetails() {
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
   }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "detais"
+    className: "details"
   }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map((consolidate, index) => {
@@ -34472,7 +34476,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57821" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50727" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

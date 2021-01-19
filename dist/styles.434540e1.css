@@ -46,6 +46,11 @@ address {
   }
 }
 
+.details {
+  position: absolute;
+  left: 30%;
+}
+
 progress {
   border-radius: 80px;
   height: 8px;
@@ -80,17 +85,19 @@ ul {
   }
 }
 
-.detais {
-  width: 75%;
-}
-
 .place_finder {
   background-color: #1E213A;
 }
 @media (min-width: 1140px) {
   .place_finder {
     display: block;
-    min-height: 100vh;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    gap: 20px;
   }
 }
 
@@ -211,28 +218,37 @@ ul {
 }
 
 .popup {
-  height: 672px;
+  height: 100vh;
   position: fixed;
   background-color: #1E213A;
-  width: fit-content;
-  display: grid;
+  width: max-content;
+  top: 0;
+  left: 0;
+}
+.popup .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: left;
 }
 .popup .closePopup {
-  align-items: flex-end;
-  justify-self: flex-end;
+  text-align: right;
+  align-self: flex-end;
 }
 
 .today_detail {
   font-size: 18px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
-  justify-content: center;
-  gap: 87px;
 }
 @media (min-width: 1140px) {
   .today_detail {
-    width: 459px;
+    height: 75vh;
+    margin-bottom: 30px;
   }
 }
 .today_detail img {
@@ -241,10 +257,10 @@ ul {
 }
 .today_detail .temperature {
   font-weight: 500;
-  font-size: 48px;
+  font-size: 26px;
 }
 .today_detail .temperature_value {
-  font-size: 144px;
+  font-size: 48px;
 }
 .today_detail .weather-name {
   font-weight: 600;
@@ -257,9 +273,10 @@ ul {
   color: #88869D;
 }
 .today_detail .city-name {
+  align-self: center;
   background-image: url("/location_on-24px.ddb86b60.svg");
   background-repeat: no-repeat;
-  background-position: 25%;
+  background-position: 15%;
 }
 
 .converter {
@@ -285,6 +302,25 @@ ul {
   justify-content: space-around;
   font-weight: bold;
   font-size: 18px;
+}
+
+.search-result {
+  overflow: auto;
+  position: relative;
+}
+.search-result_list {
+  display: grid;
+}
+.search-result_list_item {
+  cursor: pointer;
+  width: 270px;
+  text-align: left;
+  padding-top: 23px;
+  padding-bottom: 22px;
+  padding-left: 12px;
+}
+.search-result_list_item:hover {
+  border: 1px solid #616475;
 }
 
 /*# sourceMappingURL=/styles.434540e1.css.map */

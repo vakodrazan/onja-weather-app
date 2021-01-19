@@ -12,7 +12,7 @@ function WeatherDetails() {
 
     return (
         <div className="content">
-            <div className="detais">
+            <div className="details">
 
                 <TemperatureConverter />
 

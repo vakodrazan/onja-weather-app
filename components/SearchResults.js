@@ -17,18 +17,18 @@ function SearchResults() {
     return (
         <>
             {isOpen &&
-                <div>
+                <>
                     {loading && <p>Loading...</p>}
-                    <div>
+                    <div className="search-result">
                         {location.length > 0 && location.map(loc => (
-                            <div key={loc.woeid}>
-                                <p id={loc.woeid} onClick={handlePlaceFinder}>
+                            <ul key={loc.woeid} className="search-result_list">
+                                <li className="search-result_list_item" id={loc.woeid} onClick={handlePlaceFinder}>
                                     {loc.title}
-                                </p>
-                            </div>
+                                </li>
+                            </ul>
                         ))}
                     </div>
-                </div>
+                </>
             } 
         </>
     )

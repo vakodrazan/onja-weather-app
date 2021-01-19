@@ -227,9 +227,14 @@ ul {
     height: 100vh;
     position: fixed;
     background-color: #1E213A;
+    overflow-y: scroll;
     width: max-content;
     top: 0;
     left: 0;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     .content {
         display: flex;
@@ -320,6 +325,7 @@ ul {
 .search-result {
     overflow: auto;
     position: relative;
+    font-size: 16px;
 
     &_list {
         display: grid;

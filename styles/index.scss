@@ -303,8 +303,10 @@ ul {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    gap: 30px;
     
     @media (min-width: $desktop_breakpoint) {
+        gap: 2px;
         height: 75vh;
         margin-bottom: 30px;
     }
@@ -316,10 +318,15 @@ ul {
 
     .temperature {
         font-weight: 500;
-        font-size: 26px;
+        font-size: 48px;
 
+        
         &_value {
-            font-size: 48px;
+            font-size: 144px;
+
+            @media (min-width: $desktop_breakpoint) {
+                font-size: 76px;
+            }
         }
     }
 

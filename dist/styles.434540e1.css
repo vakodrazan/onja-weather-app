@@ -290,9 +290,11 @@ ul {
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  gap: 30px;
 }
 @media (min-width: 1140px) {
   .today_detail {
+    gap: 2px;
     height: 75vh;
     margin-bottom: 30px;
   }
@@ -303,10 +305,15 @@ ul {
 }
 .today_detail .temperature {
   font-weight: 500;
-  font-size: 26px;
+  font-size: 48px;
 }
 .today_detail .temperature_value {
-  font-size: 48px;
+  font-size: 144px;
+}
+@media (min-width: 1140px) {
+  .today_detail .temperature_value {
+    font-size: 76px;
+  }
 }
 .today_detail .weather-name {
   font-weight: 600;

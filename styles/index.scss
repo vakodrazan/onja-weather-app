@@ -58,7 +58,7 @@ button {
 progress {
     border-radius: 80px; 
     height: 8px;
-    max-width: 100%;
+    width: 100%;
     
     &::-webkit-progress-bar {
         background-color: #E7E7EB;
@@ -150,8 +150,10 @@ ul {
     &_item {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        text-align: center;
         background-color: #1E213A;
+        padding-left: 40px;
+        padding-right: 40px;
         padding-top: 22px;
         padding-bottom: 35px;
 

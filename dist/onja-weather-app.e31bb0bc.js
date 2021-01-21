@@ -34302,25 +34302,28 @@ function TemperatureConverter() {
   const {
     degreeType
   } = state;
+  const [isOpen, setIsOpen] = (0, _react.useState)(false);
 
   function updateDegreeForcast(e) {
     dispatch({
       type: "UPDATE_FORCAST_VALUE",
       degreeType: e.target.value
     });
+    setIsOpen(true);
+    console.log(isOpen);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "converter"
-  }, /*#__PURE__*/_react.default.createElement("div", {
-    className: "converter_item"
-  }, /*#__PURE__*/_react.default.createElement("input", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     type: "radio",
+    name: "celcius",
     id: "celsius",
     value: "celsius",
     checked: degreeType === "celsius",
     onChange: updateDegreeForcast
   }), /*#__PURE__*/_react.default.createElement("label", {
+    className: "converter_item",
     htmlFor: "celsius"
   }, "\xB0C")), /*#__PURE__*/_react.default.createElement("div", {
     className: "converter_item"
@@ -34331,6 +34334,7 @@ function TemperatureConverter() {
     checked: degreeType === "fahrenheit",
     onChange: updateDegreeForcast
   }), /*#__PURE__*/_react.default.createElement("label", {
+    className: "converter_item",
     htmlFor: "farenheit"
   }, "\xB0F")));
 }
@@ -34476,7 +34480,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65447" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

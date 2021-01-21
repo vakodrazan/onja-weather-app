@@ -319,18 +319,28 @@ ul {
         cursor: pointer;
     }
 
+    input[type="radio"]:checked ~ label {
+        color: #110E3C;
+        background-color: #E7E7EB;
+    }
+
     &_item {
-        background: #E7E7EB;
+        background-color: #585676;
+        color: #E7E7EB;
+        border: none;
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        color: #110E3C;
         display: flex;
         align-items: center;
         justify-content: space-around;
         font-weight: bold;
         font-size: 18px;
         cursor: pointer;
+
+        &:hover {
+            opacity: 0.9;
+        }
     }
 }
 

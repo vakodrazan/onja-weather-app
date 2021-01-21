@@ -1,25 +1,30 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../Context';
 
 function TemperatureConverter() {
     const {state, dispatch} = useContext(Context);
     const {degreeType} = state;
 
+    const [ isOpen, setIsOpen ] = useState(false);
+
     function updateDegreeForcast(e) {
-        dispatch({type: "UPDATE_FORCAST_VALUE", degreeType: e.target.value})
+        dispatch({type: "UPDATE_FORCAST_VALUE", degreeType: e.target.value});
+        setIsOpen(true)
+        console.log(isOpen);
     }
 
     return (
         <div className="converter">
-            <div className="converter_item">
+            <div>
                 <input
                     type="radio"
+                    name="celcius"
                     id="celsius"
                     value="celsius"
                     checked={degreeType === "celsius"}
                     onChange={updateDegreeForcast}
                 />
-                <label htmlFor="celsius">°C</label>
+                <label className="converter_item" htmlFor="celsius">°C</label>
             </div>
             <div className="converter_item">
                 <input
@@ -29,7 +34,7 @@ function TemperatureConverter() {
                     checked={degreeType === "fahrenheit"}
                     onChange={updateDegreeForcast}
                 />
-                <label htmlFor="farenheit">°F</label>
+                <label className="converter_item" htmlFor="farenheit">°F</label>
             </div>
         </div>
     )

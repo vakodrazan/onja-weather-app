@@ -302,7 +302,11 @@ ul {
   padding-bottom: 66px;
 }
 .converter input[type=radio] {
+  cursor: pointer;
   display: none;
+}
+.converter input[type=radio] ~ label {
+  cursor: pointer;
 }
 .converter_item {
   background: #E7E7EB;
@@ -315,6 +319,7 @@ ul {
   justify-content: space-around;
   font-weight: bold;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .search-result {

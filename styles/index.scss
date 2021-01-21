@@ -311,7 +311,12 @@ ul {
     padding-bottom: 66px;
 
     input[type="radio"] {
+        cursor: pointer;
         display: none;
+    }
+
+    input[type="radio"] ~ label {
+        cursor: pointer;
     }
 
     &_item {
@@ -325,6 +330,7 @@ ul {
         justify-content: space-around;
         font-weight: bold;
         font-size: 18px;
+        cursor: pointer;
     }
 }
 

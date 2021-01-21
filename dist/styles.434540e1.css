@@ -2,19 +2,19 @@
   font-family: "Raleway Bold";
   font-weight: 700;
   font-style: normal;
-  src: local("Raleway Bold"), local("Raleway-Bold"), url("/raleway-700.6c3845d2.woff2") format(woff2), url("/raleway-700.bfe553e2.woff") format(woff);
+  src: local("Raleway Bold"), local("raleway-Bold"), url("/raleway-700.6c3845d2.woff2") format(woff2), url("/raleway-700.bfe553e2.woff") format(woff);
 }
 @font-face {
   font-family: "Raleway SemiBold";
   font-weight: 600;
   font-style: normal;
-  src: local("Raleway SemiBold"), local("Raleway-SemiBold"), url("/raleway-600.845e13ec.woff2") format(woff2), url("/raleway-600.793738fc.woff") format(woff);
+  src: local("Raleway SemiBold"), local("raleway-SemiBold"), url("/raleway-600.845e13ec.woff2") format(woff2), url("/raleway-600.793738fc.woff") format(woff);
 }
 @font-face {
   font-family: "Raleway Medium";
   font-weight: 400;
   font-style: normal;
-  src: local("Raleway Medium"), local("Raleway-Medium"), url("/raleway-500.b92737a9.woff2") format(woff2), url("/raleway-500.958c9fac.woff") format(woff);
+  src: local("Raleway Medium"), local("raleway-Medium"), url("/raleway-500.b92737a9.woff2") format(woff2), url("/raleway-500.958c9fac.woff") format(woff);
 }
 body {
   margin: 0;
@@ -61,6 +61,11 @@ progress {
   border-radius: 80px;
   height: 8px;
   width: 100%;
+}
+progress::-moz-progress-bar {
+  background-color: #FFEC65;
+  border-radius: 80px;
+  height: 8px;
 }
 progress::-webkit-progress-bar {
   background-color: #E7E7EB;
@@ -157,11 +162,35 @@ ul {
   padding-right: 40px;
   padding-top: 22px;
   padding-bottom: 35px;
+  gap: 12px;
+}
+.detail_highlight_item_progress-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #A09FB1;
 }
 .detail_highlight_item .percentage {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.detail_highlight_item_title {
+  font-weight: 500;
+}
+.detail_highlight_item_wind-direction {
+  font-size: 14px;
+  font-weight: 500;
+}
+.detail_highlight_item_bold {
+  font-size: 64px;
+  font-weight: 500;
+}
+.detail_highlight_item_label {
+  text-align: right;
+  display: block;
 }
 
 .search {

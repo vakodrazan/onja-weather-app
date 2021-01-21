@@ -17,30 +17,30 @@ function WeatherDetailsHighlight() {
             {highlightDetail && 
                 <ul className="detail_highlight">
                     <li className="detail_highlight_item">
-                        <p>Wind Status</p>
-                        <strong>{Math.round(highlightDetail[0].wind_speed)} mph</strong>
-                        <span>{highlightDetail[0].wind_direction_compass}</span>
+                        <p className="detail_highlight_item_title">Wind Status</p>
+                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].wind_speed)} mph</strong>
+                        <span className="detail_highlight_item_wind-direction">{highlightDetail[0].wind_direction_compass}</span>
                     </li>
                     <li className="detail_highlight_item">
-                        <p>Humidity</p>
-                        <strong>{highlightDetail[0].humidity} mph</strong>
-                        <div>
+                        <p className="detail_highlight_item_title">Humidity</p>
+                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].humidity)} mph</strong>
+                        <div className="detail_highlight_item_progress-bar">
                             <div className="percentage">
                                 <span>01</span>
                                 <span>50</span>
                                 <span>100</span>
                             </div>
                             <progress value={highlightDetail[0].humidity} max="100"> 32% </progress>
-                            <label>%</label>
+                            <label className="detail_highlight_item_label">%</label>
                         </div>
                     </li>
                     <li className="detail_highlight_item">
-                        <p>Visibility</p>
-                        <strong>{Math.round(highlightDetail[0].visibility)} miles</strong>
+                        <p className="detail_highlight_item_title">Visibility</p>
+                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].visibility)} miles</strong>
                     </li>
                     <li className="detail_highlight_item">
-                        <p>Air Pressure</p>
-                        <strong>{highlightDetail[0].air_pressure} mb</strong>
+                        <p className="detail_highlight_item_title">Air Pressure</p>
+                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].air_pressure)} mb</strong>
                     </li>
                 </ul>
             }

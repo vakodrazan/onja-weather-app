@@ -34262,18 +34262,40 @@ function WeatherDetailsHighlight() {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", null, Math.round(highlightDetail[0].wind_speed), " mph"), /*#__PURE__*/_react.default.createElement("span", null, highlightDetail[0].wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", {
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "detail_highlight_item_title"
+  }, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", {
+    className: "detail_highlight_item_bold"
+  }, Math.round(highlightDetail[0].wind_speed), " mph"), /*#__PURE__*/_react.default.createElement("span", {
+    className: "detail_highlight_item_wind-direction"
+  }, highlightDetail[0].wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Humidity"), /*#__PURE__*/_react.default.createElement("strong", null, highlightDetail[0].humidity, " mph"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "detail_highlight_item_title"
+  }, "Humidity"), /*#__PURE__*/_react.default.createElement("strong", {
+    className: "detail_highlight_item_bold"
+  }, Math.round(highlightDetail[0].humidity), " mph"), /*#__PURE__*/_react.default.createElement("div", {
+    className: "detail_highlight_item_progress-bar"
+  }, /*#__PURE__*/_react.default.createElement("div", {
     className: "percentage"
   }, /*#__PURE__*/_react.default.createElement("span", null, "01"), /*#__PURE__*/_react.default.createElement("span", null, "50"), /*#__PURE__*/_react.default.createElement("span", null, "100")), /*#__PURE__*/_react.default.createElement("progress", {
     value: highlightDetail[0].humidity,
     max: "100"
-  }, " 32% "), /*#__PURE__*/_react.default.createElement("label", null, "%"))), /*#__PURE__*/_react.default.createElement("li", {
+  }, " 32% "), /*#__PURE__*/_react.default.createElement("label", {
+    className: "detail_highlight_item_label"
+  }, "%"))), /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Visibility"), /*#__PURE__*/_react.default.createElement("strong", null, Math.round(highlightDetail[0].visibility), " miles")), /*#__PURE__*/_react.default.createElement("li", {
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "detail_highlight_item_title"
+  }, "Visibility"), /*#__PURE__*/_react.default.createElement("strong", {
+    className: "detail_highlight_item_bold"
+  }, Math.round(highlightDetail[0].visibility), " miles")), /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Air Pressure"), /*#__PURE__*/_react.default.createElement("strong", null, highlightDetail[0].air_pressure, " mb"))));
+  }, /*#__PURE__*/_react.default.createElement("p", {
+    className: "detail_highlight_item_title"
+  }, "Air Pressure"), /*#__PURE__*/_react.default.createElement("strong", {
+    className: "detail_highlight_item_bold"
+  }, Math.round(highlightDetail[0].air_pressure), " mb"))));
 }
 
 var _default = WeatherDetailsHighlight;

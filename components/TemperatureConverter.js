@@ -7,7 +7,6 @@ function TemperatureConverter() {
 
     function updateDegreeForcast(e) {
         dispatch({type: "UPDATE_FORCAST_VALUE", degreeType: e.target.value});
-        setIsOpen(true)
     }
 
     return (

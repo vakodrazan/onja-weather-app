@@ -34330,7 +34330,6 @@ function TemperatureConverter() {
       type: "UPDATE_FORCAST_VALUE",
       degreeType: e.target.value
     });
-    setIsOpen(true);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {

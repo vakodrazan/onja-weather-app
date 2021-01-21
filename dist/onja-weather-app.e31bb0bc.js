@@ -34324,7 +34324,6 @@ function TemperatureConverter() {
   const {
     degreeType
   } = state;
-  const [isOpen, setIsOpen] = (0, _react.useState)(false);
 
   function updateDegreeForcast(e) {
     dispatch({
@@ -34332,7 +34331,6 @@ function TemperatureConverter() {
       degreeType: e.target.value
     });
     setIsOpen(true);
-    console.log(isOpen);
   }
 
   return /*#__PURE__*/_react.default.createElement("div", {

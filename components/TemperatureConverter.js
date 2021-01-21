@@ -5,12 +5,9 @@ function TemperatureConverter() {
     const {state, dispatch} = useContext(Context);
     const {degreeType} = state;
 
-    const [ isOpen, setIsOpen ] = useState(false);
-
     function updateDegreeForcast(e) {
         dispatch({type: "UPDATE_FORCAST_VALUE", degreeType: e.target.value});
         setIsOpen(true)
-        console.log(isOpen);
     }
 
     return (

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Context } from '../Context';
 
 import WindDirectionImage from "../assets/navigation-24px.svg";
+import styled from 'styled-components';
 
 function WeatherDetailsHighlight() {
     const { state } = useContext(Context);
@@ -9,6 +10,13 @@ function WeatherDetailsHighlight() {
 
     const highlightDetail = details.consolidated_weather;
     console.log(highlightDetail);
+
+    const direction = highlightDetail && Math.round(highlightDetail[0].wind_direction);
+    console.log(direction);
+
+    const ImageRotate = styled.img`
+        transform: rotate((direction)deg)
+    `;
 
     return (
         <div>
@@ -23,7 +31,7 @@ function WeatherDetailsHighlight() {
                         <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].wind_speed)} mph</strong>
                         <div>
                             <span className="detail_highlight_item_wind-direction">{highlightDetail[0].wind_direction_compass}</span>
-                            <img src={WindDirectionImage} alt="Wind direction" />
+                            <ImageRotate src={WindDirectionImage} alt="Wind direction" />
                         </div>
                     </li>
                     <li className="detail_highlight_item">

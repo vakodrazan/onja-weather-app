@@ -142,6 +142,10 @@ ul {
             justify-content: space-between;
             gap: 16px;
             padding-top: 31px;
+
+            &--minimum {
+                color: #A09FB1;
+            }
         }
     }
 }

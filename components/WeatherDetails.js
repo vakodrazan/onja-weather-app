@@ -40,7 +40,7 @@ function WeatherDetails() {
                                     <img src={`https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`} />
                                     <div className="content_detail_item_temp">
                                         <span>{degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"}</span>
-                                        <span>{degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F"}</span>
+                                        <span className="content_detail_item_temp--minimum">{degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F"}</span>
                                     </div>
                                 </li>
                             )

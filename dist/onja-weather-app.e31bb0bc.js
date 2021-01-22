@@ -36366,7 +36366,9 @@ function WeatherDetails() {
       src: `https://www.metaweather.com/static/img/weather/png/${consolidate.weather_state_abbr}.png`
     }), /*#__PURE__*/_react.default.createElement("div", {
       className: "content_detail_item_temp"
-    }, /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"), /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F")));
+    }, /*#__PURE__*/_react.default.createElement("span", null, degreeType === "celsius" ? celsiusMaxTemp + "°C" : fahrenheitMaxTemp + "°F"), /*#__PURE__*/_react.default.createElement("span", {
+      className: "content_detail_item_temp--minimum"
+    }, degreeType === "celsius" ? celsiusMinTemp + "°C" : fahrenheitMinTemp + "°F")));
   })), /*#__PURE__*/_react.default.createElement(_WeatherDetailsHighlight.default, null)));
 }
 

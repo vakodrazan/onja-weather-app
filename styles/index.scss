@@ -193,7 +193,11 @@ ul {
 
         &_bold {
             font-size: 64px;
-            font-weight: 500
+            font-weight: 500;
+
+            small {
+                font-size: 40px;
+            }
         }
 
         &_label {

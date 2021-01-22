@@ -36202,7 +36202,7 @@ function WeatherDetailsHighlight() {
     className: "detail_highlight_item_title"
   }, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", {
     className: "detail_highlight_item_bold"
-  }, Math.round(highlightDetail[0].wind_speed), " mph"), /*#__PURE__*/_react.default.createElement("div", {
+  }, Math.round(highlightDetail[0].wind_speed), " ", /*#__PURE__*/_react.default.createElement("small", null, "mph")), /*#__PURE__*/_react.default.createElement("div", {
     className: "wind"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "wind-rotation"
@@ -36217,7 +36217,7 @@ function WeatherDetailsHighlight() {
     className: "detail_highlight_item_title"
   }, "Humidity"), /*#__PURE__*/_react.default.createElement("strong", {
     className: "detail_highlight_item_bold"
-  }, Math.round(highlightDetail[0].humidity), " mph"), /*#__PURE__*/_react.default.createElement("div", {
+  }, Math.round(highlightDetail[0].humidity), /*#__PURE__*/_react.default.createElement("small", null, "%")), /*#__PURE__*/_react.default.createElement("div", {
     className: "detail_highlight_item_progress-bar"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "percentage"
@@ -36232,13 +36232,13 @@ function WeatherDetailsHighlight() {
     className: "detail_highlight_item_title"
   }, "Visibility"), /*#__PURE__*/_react.default.createElement("strong", {
     className: "detail_highlight_item_bold"
-  }, Math.round(highlightDetail[0].visibility), " miles")), /*#__PURE__*/_react.default.createElement("li", {
+  }, Math.round(highlightDetail[0].visibility), /*#__PURE__*/_react.default.createElement("small", null, " miles"))), /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "detail_highlight_item_title"
   }, "Air Pressure"), /*#__PURE__*/_react.default.createElement("strong", {
     className: "detail_highlight_item_bold"
-  }, Math.round(highlightDetail[0].air_pressure), " mb"))));
+  }, Math.round(highlightDetail[0].air_pressure), " ", /*#__PURE__*/_react.default.createElement("small", null, "mb")))));
 }
 
 var _default = WeatherDetailsHighlight;

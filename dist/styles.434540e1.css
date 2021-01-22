@@ -188,6 +188,9 @@ ul {
   font-size: 64px;
   font-weight: 500;
 }
+.detail_highlight_item_bold small {
+  font-size: 40px;
+}
 .detail_highlight_item_label {
   text-align: right;
   display: block;

@@ -32,7 +32,9 @@ console.log(ImageRotate)
                 <ul className="detail_highlight">
                     <li className="detail_highlight_item detail_highlight--status">
                         <p className="detail_highlight_item_title">Wind Status</p>
-                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].wind_speed)} mph</strong>
+                        <strong className="detail_highlight_item_bold">
+                            {Math.round(highlightDetail[0].wind_speed)} <small>mph</small>
+                        </strong>
                         <div className="wind">
                             <div className="wind-rotation">
                                 <ImageRotate src={WindDirectionImage} alt="Wind direction" />
@@ -42,7 +44,9 @@ console.log(ImageRotate)
                     </li>
                     <li className="detail_highlight_item">
                         <p className="detail_highlight_item_title">Humidity</p>
-                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].humidity)} mph</strong>
+                        <strong className="detail_highlight_item_bold">
+                            {Math.round(highlightDetail[0].humidity)}<small>%</small>
+                        </strong>
                         <div className="detail_highlight_item_progress-bar">
                             <div className="percentage">
                                 <span>01</span>
@@ -55,11 +59,15 @@ console.log(ImageRotate)
                     </li>
                     <li className="detail_highlight_item">
                         <p className="detail_highlight_item_title">Visibility</p>
-                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].visibility)} miles</strong>
+                        <strong className="detail_highlight_item_bold">
+                            {Math.round(highlightDetail[0].visibility)}<small> miles</small> 
+                        </strong>
                     </li>
                     <li className="detail_highlight_item">
                         <p className="detail_highlight_item_title">Air Pressure</p>
-                        <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].air_pressure)} mb</strong>
+                        <strong className="detail_highlight_item_bold">
+                            {Math.round(highlightDetail[0].air_pressure)} <small>mb</small> 
+                        </strong>
                     </li>
                 </ul>
             }

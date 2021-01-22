@@ -36189,8 +36189,9 @@ function WeatherDetailsHighlight() {
   const direction = highlightDetail && Math.round(highlightDetail[0].wind_direction);
   console.log(direction);
   const ImageRotate = _styledComponents.default.img`
-        transform: rotate((direction)deg)
+        transform: rotate(${direction}deg)
     `;
+  console.log(ImageRotate);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {

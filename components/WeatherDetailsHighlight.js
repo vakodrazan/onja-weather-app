@@ -15,8 +15,10 @@ function WeatherDetailsHighlight() {
     console.log(direction);
 
     const ImageRotate = styled.img`
-        transform: rotate((direction)deg)
+        transform: rotate(${direction}deg)
     `;
+
+console.log(ImageRotate)
 
     return (
         <div>

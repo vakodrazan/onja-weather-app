@@ -1,12 +1,14 @@
-import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext } from 'react';
 import { Context } from '../Context';
+
+import WindDirectionImage from "../assets/navigation-24px.svg";
 
 function WeatherDetailsHighlight() {
     const { state } = useContext(Context);
     const {details, loading} = state;
 
     const highlightDetail = details.consolidated_weather;
+    console.log(highlightDetail);
 
     return (
         <div>
@@ -19,7 +21,10 @@ function WeatherDetailsHighlight() {
                     <li className="detail_highlight_item">
                         <p className="detail_highlight_item_title">Wind Status</p>
                         <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].wind_speed)} mph</strong>
-                        <span className="detail_highlight_item_wind-direction">{highlightDetail[0].wind_direction_compass}</span>
+                        <div>
+                            <span className="detail_highlight_item_wind-direction">{highlightDetail[0].wind_direction_compass}</span>
+                            <img src={WindDirectionImage} alt="Wind direction" />
+                        </div>
                     </li>
                     <li className="detail_highlight_item">
                         <p className="detail_highlight_item_title">Humidity</p>

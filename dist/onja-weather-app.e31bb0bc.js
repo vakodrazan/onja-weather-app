@@ -34231,7 +34231,9 @@ function Header() {
 
 var _default = Header;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./TodayWeatherDetail":"components/TodayWeatherDetail.js"}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./SearchForm":"components/SearchForm.js","./TodayWeatherDetail":"components/TodayWeatherDetail.js"}],"assets/navigation-24px.svg":[function(require,module,exports) {
+module.exports = "/navigation-24px.41d0f24c.svg";
+},{}],"components/WeatherDetailsHighlight.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34241,9 +34243,11 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactRouterDom = require("react-router-dom");
-
 var _Context = require("../Context");
+
+var _navigation24px = _interopRequireDefault(require("../assets/navigation-24px.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34258,6 +34262,7 @@ function WeatherDetailsHighlight() {
     loading
   } = state;
   const highlightDetail = details.consolidated_weather;
+  console.log(highlightDetail);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
@@ -34266,9 +34271,12 @@ function WeatherDetailsHighlight() {
     className: "detail_highlight_item_title"
   }, "Wind Status"), /*#__PURE__*/_react.default.createElement("strong", {
     className: "detail_highlight_item_bold"
-  }, Math.round(highlightDetail[0].wind_speed), " mph"), /*#__PURE__*/_react.default.createElement("span", {
+  }, Math.round(highlightDetail[0].wind_speed), " mph"), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "detail_highlight_item_wind-direction"
-  }, highlightDetail[0].wind_direction_compass)), /*#__PURE__*/_react.default.createElement("li", {
+  }, highlightDetail[0].wind_direction_compass), /*#__PURE__*/_react.default.createElement("img", {
+    src: _navigation24px.default,
+    alt: "Wind direction"
+  }))), /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item"
   }, /*#__PURE__*/_react.default.createElement("p", {
     className: "detail_highlight_item_title"
@@ -34300,7 +34308,7 @@ function WeatherDetailsHighlight() {
 
 var _default = WeatherDetailsHighlight;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js"}],"components/TemperatureConverter.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","../assets/navigation-24px.svg":"assets/navigation-24px.svg"}],"components/TemperatureConverter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34499,7 +34507,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57951" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50431" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

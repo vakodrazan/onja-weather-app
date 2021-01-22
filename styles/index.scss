@@ -201,6 +201,24 @@ ul {
             display: block;
         }
     }
+
+    &--status {
+        align-items: center;
+    }
+
+    .wind {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        &-rotation {
+            width: 20px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+    }
 }
 
 .search {

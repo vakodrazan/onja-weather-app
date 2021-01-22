@@ -192,6 +192,21 @@ ul {
   text-align: right;
   display: block;
 }
+.detail_highlight--status {
+  align-items: center;
+}
+.detail_highlight .wind {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.detail_highlight .wind-rotation {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+}
 
 .search {
   display: flex;

@@ -15,7 +15,9 @@ function WeatherDetailsHighlight() {
     console.log(direction);
 
     const ImageRotate = styled.img`
-        transform: rotate(${direction}deg)
+        transform: rotate(${direction}deg);
+        width: 8px;
+        height: 9px;
     `;
 
 console.log(ImageRotate)
@@ -28,12 +30,14 @@ console.log(ImageRotate)
 
             {highlightDetail && 
                 <ul className="detail_highlight">
-                    <li className="detail_highlight_item">
+                    <li className="detail_highlight_item detail_highlight--status">
                         <p className="detail_highlight_item_title">Wind Status</p>
                         <strong className="detail_highlight_item_bold">{Math.round(highlightDetail[0].wind_speed)} mph</strong>
-                        <div>
+                        <div className="wind">
+                            <div className="wind-rotation">
+                                <ImageRotate src={WindDirectionImage} alt="Wind direction" />
+                            </div>
                             <span className="detail_highlight_item_wind-direction">{highlightDetail[0].wind_direction_compass}</span>
-                            <ImageRotate src={WindDirectionImage} alt="Wind direction" />
                         </div>
                     </li>
                     <li className="detail_highlight_item">

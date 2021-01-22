@@ -34145,6 +34145,8 @@ const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 exports.days = days;
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 exports.months = months;
+},{}],"assets/location_on-24px.svg":[function(require,module,exports) {
+module.exports = "/location_on-24px.ddb86b60.svg";
 },{}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
 "use strict";
 
@@ -34158,6 +34160,10 @@ var _react = _interopRequireWildcard(require("react"));
 var _Context = require("../Context");
 
 var _DateArray = require("./DateArray");
+
+var _location_on24px = _interopRequireDefault(require("../assets/location_on-24px.svg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34200,14 +34206,14 @@ function TodayWeatherDetail() {
     className: "applicable"
   }, /*#__PURE__*/_react.default.createElement("time", {
     dateTime: details.consolidated_weather[0].applicable_date
-  }, "Today . ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", {
+  }, "Today \u2022 ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", {
     className: "city-name"
   }, details.title))) : "");
 }
 
 var _default = TodayWeatherDetail;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","./DateArray":"components/DateArray.js"}],"components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./DateArray":"components/DateArray.js","../assets/location_on-24px.svg":"assets/location_on-24px.svg"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

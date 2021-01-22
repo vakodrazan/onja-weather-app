@@ -3,6 +3,8 @@ import { Context } from '../Context';
 
 import {days, months} from "./DateArray"
 
+import locationImage from "../assets/location_on-24px.svg";
+
 function TodayWeatherDetail() {
     const {state} = useContext(Context);
     const {details, loading, degreeType} = state;
@@ -24,11 +26,22 @@ function TodayWeatherDetail() {
             {details.consolidated_weather 
                 ? <div className="today_detail">
                     <img src={`https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`} />
-                    <div className="temperature">{degreeType === "celsius" ? <div><span className="temperature_value">{celsius}</span> °C</div> : <div><span className="temperature_value"> {fahrenheit}</span> °F</div>}</div>
-                    <p className="weather-name">{details.consolidated_weather[0].weather_state_name}</p>
+                    <div className="temperature">
+                        {degreeType === "celsius" 
+                            ? <div><span className="temperature_value">{celsius}</span> °C</div> 
+                            : <div><span className="temperature_value"> {fahrenheit}</span> °F</div>
+                        }
+                        </div>
+                    <p className="weather-name">
+                        {details.consolidated_weather[0].weather_state_name}
+                    </p>
                     <div className="applicable">
-                        <time dateTime={details.consolidated_weather[0].applicable_date}>Today . {day}, {numericDate} {month}</time>
-                        <address className="city-name">{details.title}</address>
+                        <time dateTime={details.consolidated_weather[0].applicable_date}>
+                            Today • {day}, {numericDate} {month}
+                        </time>
+                        <address className="city-name">
+                            {details.title}
+                        </address>
                     </div>
                 </div>
                 : ""

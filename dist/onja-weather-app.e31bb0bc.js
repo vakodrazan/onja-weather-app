@@ -34171,7 +34171,7 @@ function Loading() {
     loading
   } = state;
   return loading && /*#__PURE__*/_react.default.createElement("p", {
-    className: "Loading"
+    className: "loading"
   }, "Loading...");
 }
 },{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/TodayWeatherDetail.js":[function(require,module,exports) {

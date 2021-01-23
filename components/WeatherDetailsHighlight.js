@@ -20,7 +20,7 @@ function WeatherDetailsHighlight() {
 
     return (
         <div>
-            <h1>Today's highlights</h1>
+            {highlightDetail && <h1>Today's highlights</h1>} 
 
             {loading && <p>Loading...</p>}
 

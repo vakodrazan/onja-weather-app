@@ -36205,7 +36205,7 @@ function WeatherDetailsHighlight() {
         width: 8px;
         height: 9px;
     `;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
+  return /*#__PURE__*/_react.default.createElement("div", null, highlightDetail && /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item detail_highlight--status"

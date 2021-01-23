@@ -5,10 +5,11 @@ import { Context } from '../Context';
 import WeatherDetailsHighlight from './WeatherDetailsHighlight';
 import {months, days} from "./DateArray";
 import TemperatureConverter from './TemperatureConverter';
+import Loading from './Loading';
 
 function WeatherDetails() {
     const {state} = useContext(Context);
-    const {loading, details, degreeType} = state;
+    const {details, degreeType} = state;
 
     return (
         <div className="content">
@@ -16,7 +17,7 @@ function WeatherDetails() {
 
                 <TemperatureConverter />
 
-                {loading && <p>Loading...</p>}
+                <Loading />
 
                 <ul className="content_detail">
                     {details.consolidated_weather 

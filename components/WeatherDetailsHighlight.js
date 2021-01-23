@@ -3,10 +3,11 @@ import { Context } from '../Context';
 
 import WindDirectionImage from "../assets/navigation-24px.svg";
 import styled from 'styled-components';
+import Loading from './Loading';
 
 function WeatherDetailsHighlight() {
     const { state } = useContext(Context);
-    const {details, loading} = state;
+    const { details } = state;
 
     const highlightDetail = details.consolidated_weather;
 
@@ -22,7 +23,7 @@ function WeatherDetailsHighlight() {
         <div>
             {highlightDetail && <h1>Today's highlights</h1>} 
 
-            {loading && <p>Loading...</p>}
+            <Loading />
 
             {highlightDetail && 
                 <ul className="detail_highlight">

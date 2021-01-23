@@ -34147,7 +34147,34 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 exports.months = months;
 },{}],"assets/location_on-24px.svg":[function(require,module,exports) {
 module.exports = "/location_on-24px.ddb86b60.svg";
-},{}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
+},{}],"components/Loading.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Loading;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _Context = require("../Context");
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function Loading() {
+  const {
+    state
+  } = (0, _react.useContext)(_Context.Context);
+  const {
+    loading
+  } = state;
+  return loading && /*#__PURE__*/_react.default.createElement("p", {
+    className: "Loading"
+  }, "Loading...");
+}
+},{"react":"node_modules/react/index.js","../Context":"Context.js"}],"components/TodayWeatherDetail.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34163,6 +34190,8 @@ var _DateArray = require("./DateArray");
 
 var _location_on24px = _interopRequireDefault(require("../assets/location_on-24px.svg"));
 
+var _Loading = _interopRequireDefault(require("./Loading"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -34175,7 +34204,6 @@ function TodayWeatherDetail() {
   } = (0, _react.useContext)(_Context.Context);
   const {
     details,
-    loading,
     degreeType
   } = state;
   const date = new Date(details.consolidated_weather && details.consolidated_weather[0].applicable_date);
@@ -34190,7 +34218,7 @@ function TodayWeatherDetail() {
   ;
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "content"
-  }, loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement(_Loading.default, null), details.consolidated_weather ? /*#__PURE__*/_react.default.createElement("div", {
     className: "today_detail"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: `https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`
@@ -34221,7 +34249,7 @@ function TodayWeatherDetail() {
 
 var _default = TodayWeatherDetail;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","./DateArray":"components/DateArray.js","../assets/location_on-24px.svg":"assets/location_on-24px.svg"}],"components/Header.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","./DateArray":"components/DateArray.js","../assets/location_on-24px.svg":"assets/location_on-24px.svg","./Loading":"components/Loading.js"}],"components/Header.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36184,6 +36212,8 @@ var _navigation24px = _interopRequireDefault(require("../assets/navigation-24px.
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _Loading = _interopRequireDefault(require("./Loading"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -36195,8 +36225,7 @@ function WeatherDetailsHighlight() {
     state
   } = (0, _react.useContext)(_Context.Context);
   const {
-    details,
-    loading
+    details
   } = state;
   const highlightDetail = details.consolidated_weather;
   const direction = highlightDetail && Math.round(highlightDetail[0].wind_direction);
@@ -36205,7 +36234,7 @@ function WeatherDetailsHighlight() {
         width: 8px;
         height: 9px;
     `;
-  return /*#__PURE__*/_react.default.createElement("div", null, highlightDetail && /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
+  return /*#__PURE__*/_react.default.createElement("div", null, highlightDetail && /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), /*#__PURE__*/_react.default.createElement(_Loading.default, null), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
     className: "detail_highlight_item detail_highlight--status"
@@ -36254,7 +36283,7 @@ function WeatherDetailsHighlight() {
 
 var _default = WeatherDetailsHighlight;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","../Context":"Context.js","../assets/navigation-24px.svg":"assets/navigation-24px.svg","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js"}],"components/TemperatureConverter.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../Context":"Context.js","../assets/navigation-24px.svg":"assets/navigation-24px.svg","styled-components":"node_modules/styled-components/dist/styled-components.browser.esm.js","./Loading":"components/Loading.js"}],"components/TemperatureConverter.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36334,6 +36363,8 @@ var _DateArray = require("./DateArray");
 
 var _TemperatureConverter = _interopRequireDefault(require("./TemperatureConverter"));
 
+var _Loading = _interopRequireDefault(require("./Loading"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -36345,7 +36376,6 @@ function WeatherDetails() {
     state
   } = (0, _react.useContext)(_Context.Context);
   const {
-    loading,
     details,
     degreeType
   } = state;
@@ -36353,7 +36383,7 @@ function WeatherDetails() {
     className: "content"
   }, /*#__PURE__*/_react.default.createElement("div", {
     className: "details"
-  }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), /*#__PURE__*/_react.default.createElement("ul", {
+  }, /*#__PURE__*/_react.default.createElement(_TemperatureConverter.default, null), /*#__PURE__*/_react.default.createElement(_Loading.default, null), /*#__PURE__*/_react.default.createElement("ul", {
     className: "content_detail"
   }, details.consolidated_weather && details.consolidated_weather?.slice(1).map((consolidate, index) => {
     const date = new Date(consolidate?.applicable_date);
@@ -36385,7 +36415,7 @@ function WeatherDetails() {
 
 var _default = WeatherDetails;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js","./DateArray":"components/DateArray.js","./TemperatureConverter":"components/TemperatureConverter.js"}],"App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","../Context":"Context.js","./WeatherDetailsHighlight":"components/WeatherDetailsHighlight.js","./DateArray":"components/DateArray.js","./TemperatureConverter":"components/TemperatureConverter.js","./Loading":"components/Loading.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

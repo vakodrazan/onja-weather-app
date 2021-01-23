@@ -4,10 +4,11 @@ import { Context } from '../Context';
 import {days, months} from "./DateArray"
 
 import locationImage from "../assets/location_on-24px.svg";
+import Loading from './Loading';
 
 function TodayWeatherDetail() {
     const {state} = useContext(Context);
-    const {details, loading, degreeType} = state;
+    const {details, degreeType} = state;
 
     const date = new Date(details.consolidated_weather && details.consolidated_weather[0].applicable_date);
 
@@ -21,7 +22,7 @@ function TodayWeatherDetail() {
     return (
         <div className="content">
 
-            {loading && <p>Loading...</p>}
+            <Loading />
 
             {details.consolidated_weather 
                 ? <div className="today_detail">

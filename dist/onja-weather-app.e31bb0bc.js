@@ -34198,9 +34198,13 @@ function TodayWeatherDetail() {
     className: "temperature"
   }, degreeType === "celsius" ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
-  }, celsius), " \xB0C") : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
+  }, celsius), " ", /*#__PURE__*/_react.default.createElement("span", {
+    className: "temperature_unit"
+  }, "\xB0C")) : /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("span", {
     className: "temperature_value"
-  }, " ", fahrenheit), " \xB0F")), /*#__PURE__*/_react.default.createElement("p", {
+  }, " ", fahrenheit), " ", /*#__PURE__*/_react.default.createElement("span", {
+    className: "temperature_unit"
+  }, "\xB0F"))), /*#__PURE__*/_react.default.createElement("p", {
     className: "weather-name"
   }, details.consolidated_weather[0].weather_state_name), /*#__PURE__*/_react.default.createElement("div", {
     className: "applicable"

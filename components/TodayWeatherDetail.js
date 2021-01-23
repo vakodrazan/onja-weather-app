@@ -28,8 +28,8 @@ function TodayWeatherDetail() {
                     <img src={`https://www.metaweather.com/static/img/weather/png/${details.consolidated_weather[0].weather_state_abbr}.png`} />
                     <div className="temperature">
                         {degreeType === "celsius" 
-                            ? <div><span className="temperature_value">{celsius}</span> °C</div> 
-                            : <div><span className="temperature_value"> {fahrenheit}</span> °F</div>
+                            ? <div><span className="temperature_value">{celsius}</span> <span className="temperature_unit">°C</span></div> 
+                            : <div><span className="temperature_value"> {fahrenheit}</span> <span className="temperature_unit">°F</span></div>
                         }
                         </div>
                     <p className="weather-name">

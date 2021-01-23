@@ -1,21 +1,3 @@
-@font-face {
-  font-family: "Raleway Bold";
-  font-weight: 700;
-  font-style: normal;
-  src: local("Raleway Bold"), local("raleway-Bold"), url("/raleway-700.6c3845d2.woff2") format(woff2), url("/raleway-700.bfe553e2.woff") format(woff);
-}
-@font-face {
-  font-family: "Raleway SemiBold";
-  font-weight: 600;
-  font-style: normal;
-  src: local("Raleway SemiBold"), local("raleway-SemiBold"), url("/raleway-600.845e13ec.woff2") format(woff2), url("/raleway-600.793738fc.woff") format(woff);
-}
-@font-face {
-  font-family: "Raleway Medium";
-  font-weight: 400;
-  font-style: normal;
-  src: local("Raleway Medium"), local("raleway-Medium"), url("/raleway-500.b92737a9.woff2") format(woff2), url("/raleway-500.958c9fac.woff") format(woff);
-}
 body {
   margin: 0;
   background-color: #100E1D;
@@ -339,15 +321,13 @@ ul {
 }
 .today_detail .temperature {
   font-weight: 500;
-  font-size: 48px;
 }
 .today_detail .temperature_value {
   font-size: 144px;
 }
-@media (min-width: 1140px) {
-  .today_detail .temperature_value {
-    font-size: 76px;
-  }
+.today_detail .temperature_unit {
+  font-size: 48px;
+  color: #A09FB1;
 }
 .today_detail .weather-name {
   font-weight: 600;

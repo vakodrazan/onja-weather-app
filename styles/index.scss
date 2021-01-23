@@ -1,5 +1,3 @@
-@import "./fonts.scss";
-
 $desktop_breakpoint: 1140px;
 
 @mixin grid-layout {
@@ -356,15 +354,14 @@ ul {
 
     .temperature {
         font-weight: 500;
-        font-size: 48px;
-
         
         &_value {
             font-size: 144px;
-
-            @media (min-width: $desktop_breakpoint) {
-                font-size: 76px;
-            }
+        }
+        
+        &_unit {
+            font-size: 48px;
+            color: #A09FB1;
         }
     }
 

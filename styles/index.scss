@@ -116,20 +116,6 @@ ul {
         position: fixed;
         gap: 20px;
     }
-
-    > .content::before {    
-        content: "";
-        background-image: url("../assets/Cloud-background.png");
-        background-size: 154%;
-        background-position: 54% 20%;
-        background-repeat: no-repeat;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0.1;
-  }
 }
 .content_detail {
     display: grid;
@@ -324,10 +310,15 @@ ul {
     position: fixed;
     background-color: #1E213A;
     overflow-y: scroll;
-    width: max-content;
-    max-width: 305px;
+    width: 100vw;
     top: 0;
     left: 0;
+    z-index: 2;
+    
+
+    @media (min-width: $desktop_breakpoint) {
+        max-width: max-content;
+    }
 
     /* Hide scrollbar */
     &::-webkit-scrollbar {
@@ -339,7 +330,6 @@ ul {
     .content {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         gap: 10px;
         justify-content: left;
     }
@@ -350,6 +340,7 @@ ul {
     }
 }
 
+
 .today_detail {
     font-size: 18px;
     display: flex;
@@ -358,7 +349,21 @@ ul {
     align-items: center;
     text-align: center;
     gap: 30px;
-    
+
+    &::before {
+        content: "";
+        background-image: url("../assets/Cloud-background.png");
+        background-size: 154%;
+        background-position: 54% 20%;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.1;
+  }
+
     @media (min-width: $desktop_breakpoint) {
         gap: 2px;
         height: 75vh;
@@ -460,7 +465,6 @@ ul {
 
         &_item {
             cursor: pointer;
-            width: 250px;
             text-align: left;
             padding-top: 23px;
             padding-bottom: 22px;

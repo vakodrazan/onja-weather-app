@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\assets\\Cloud-background.png":[["Cloud-background.44b9ecd8.png","assets/Cloud-background.png"],"assets/Cloud-background.png"],"./..\\assets\\search-24px.svg":[["search-24px.8f5bcfa6.svg","assets/search-24px.svg"],"assets/search-24px.svg"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\assets\\search-24px.svg":[["search-24px.8f5bcfa6.svg","assets/search-24px.svg"],"assets/search-24px.svg"],"./..\\assets\\Cloud-background.png":[["Cloud-background.44b9ecd8.png","assets/Cloud-background.png"],"assets/Cloud-background.png"],"_css_loader":"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;

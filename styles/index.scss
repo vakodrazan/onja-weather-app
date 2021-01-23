@@ -116,6 +116,20 @@ ul {
         position: fixed;
         gap: 20px;
     }
+
+    > .content::before {    
+        content: "";
+        background-image: url("../assets/Cloud-background.png");
+        background-size: 154%;
+        background-position: 54% 20%;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.1;
+  }
 }
 .content_detail {
     display: grid;

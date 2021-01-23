@@ -34208,7 +34208,11 @@ function TodayWeatherDetail() {
     dateTime: details.consolidated_weather[0].applicable_date
   }, "Today \u2022 ", day, ", ", numericDate, " ", month), /*#__PURE__*/_react.default.createElement("address", {
     className: "city-name"
-  }, details.title))) : "");
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    className: "city-location",
+    src: _location_on24px.default,
+    alt: "Location"
+  }), /*#__PURE__*/_react.default.createElement("span", null, details.title)))) : "");
 }
 
 var _default = TodayWeatherDetail;
@@ -36191,15 +36195,12 @@ function WeatherDetailsHighlight() {
     loading
   } = state;
   const highlightDetail = details.consolidated_weather;
-  console.log(highlightDetail);
   const direction = highlightDetail && Math.round(highlightDetail[0].wind_direction);
-  console.log(direction);
   const ImageRotate = _styledComponents.default.img`
         transform: rotate(${direction}deg);
         width: 8px;
         height: 9px;
     `;
-  console.log(ImageRotate);
   return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Today's highlights"), loading && /*#__PURE__*/_react.default.createElement("p", null, "Loading..."), highlightDetail && /*#__PURE__*/_react.default.createElement("ul", {
     className: "detail_highlight"
   }, /*#__PURE__*/_react.default.createElement("li", {
@@ -36450,7 +36451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50661" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50082" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

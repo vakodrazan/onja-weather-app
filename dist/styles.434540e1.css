@@ -54,6 +54,7 @@ button {
   .details {
     position: absolute;
     left: 30%;
+    width: 65%;
   }
 }
 
@@ -116,6 +117,7 @@ ul {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 26px;
+  padding-bottom: 72px;
 }
 @media (min-width: 1140px) {
   .content_detail {
@@ -131,6 +133,11 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+@media (min-width: 1140px) {
+  .content_detail_item {
+    height: 180px;
+  }
 }
 .content_detail_item img {
   padding-top: 15px;
@@ -250,6 +257,11 @@ ul {
   flex-direction: row;
   justify-content: space-between;
 }
+@media (min-width: 1140px) {
+  .search_popup {
+    gap: 50px;
+  }
+}
 .search_popup_button {
   background: #6E707A;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -281,6 +293,7 @@ ul {
   background-color: #1E213A;
   overflow-y: scroll;
   width: max-content;
+  max-width: 305px;
   top: 0;
   left: 0;
   /* Hide scrollbar */
@@ -350,6 +363,13 @@ ul {
   align-self: center;
   background-repeat: no-repeat;
   background-position: 10%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.today_detail .city-name .city-location {
+  width: 20px;
+  height: 29px;
 }
 
 .converter {
@@ -397,11 +417,12 @@ ul {
 }
 .search-result_list_item {
   cursor: pointer;
-  width: 270px;
+  width: 250px;
   text-align: left;
   padding-top: 23px;
   padding-bottom: 22px;
   padding-left: 12px;
+  border: 1px solid transparent;
 }
 .search-result_list_item:hover {
   border: 1px solid #616475;

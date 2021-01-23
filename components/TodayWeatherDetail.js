@@ -40,7 +40,8 @@ function TodayWeatherDetail() {
                             Today • {day}, {numericDate} {month}
                         </time>
                         <address className="city-name">
-                            {details.title}
+                            <img className="city-location" src={locationImage} alt="Location" />
+                            <span>{details.title}</span>
                         </address>
                     </div>
                 </div>

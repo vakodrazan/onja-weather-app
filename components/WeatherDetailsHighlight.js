@@ -9,18 +9,14 @@ function WeatherDetailsHighlight() {
     const {details, loading} = state;
 
     const highlightDetail = details.consolidated_weather;
-    console.log(highlightDetail);
 
     const direction = highlightDetail && Math.round(highlightDetail[0].wind_direction);
-    console.log(direction);
 
     const ImageRotate = styled.img`
         transform: rotate(${direction}deg);
         width: 8px;
         height: 9px;
     `;
-
-console.log(ImageRotate)
 
     return (
         <div>
